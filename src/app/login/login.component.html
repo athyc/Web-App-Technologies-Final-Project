@@ -1,0 +1,38 @@
+<div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+    <div class="col-md-12 px-0">
+        <h1 class="display-4 font-italic">Login Page</h1>
+        <p class="lead my-3">Please input your email and password.</p>
+    </div>
+    <form class="p-3" [formGroup]="loginform" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label class="control-label required" for="userEmail">Email</label>
+                <input class="form-control" id="userEmail" formControlName="userEmail">
+                <div
+                    *ngIf="loginform.controls.userEmail.errors?.required && (loginform.controls.userEmail.dirty || loginform.controls.userEmail.touched)">
+                    <div class="text-danger">Required</div>
+                </div>
+                <div
+                    *ngIf="loginform.controls.userEmail.errors?.email && (loginform.controls.userEmail.dirty || loginform.controls.userEmail.touched)">
+                    <div class="text-danger">Not an email</div>
+                </div>
+                <div *ngIf="!emailExists()">
+                    <div class="text-danger">That email is unregistered. try signing up</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label class="control-label required" for="passWord">Password</label>
+                <input type="password" class="form-control" id="passWord" formControlName="passWord">
+                <div
+                    *ngIf="loginform.controls.passWord.errors?.required && (loginform.controls.passWord.dirty || loginform.controls.passWord.touched)">
+                    <div class="text-danger">Required</div>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!loginform.valid">Log in</button>
+    </form>
+
+</div>

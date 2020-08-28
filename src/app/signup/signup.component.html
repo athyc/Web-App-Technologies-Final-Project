@@ -1,0 +1,120 @@
+<form class="p-3" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+
+
+  <div class="form-row">
+    <div class="form-group col-md-8">
+      <label class="control-label required" for="userEmail">Email</label>
+      <input class="form-control" id="userEmail" formControlName="userEmail">
+      <div
+        *ngIf="signupForm.controls.userEmail.errors?.required && (signupForm.controls.userEmail.dirty || signupForm.controls.userEmail.touched)">
+        <div class="text-danger">Required</div>
+      </div>
+      <div
+        *ngIf="signupForm.controls.userEmail.errors?.email && (signupForm.controls.userEmail.dirty || signupForm.controls.userEmail.touched)">
+        <div class="text-danger">Not an email</div>
+      </div>
+      <div
+        *ngIf="emailExists()">
+        <div class="text-danger">That email is taken. Please choose another email</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label class="control-label required" for="userName">Username</label>
+      <input class="form-control" id="userName" formControlName="userName" (change)="userNameExists()">
+      <div
+        *ngIf="signupForm.controls.userName.errors?.required && (signupForm.controls.userName.dirty || signupForm.controls.userName.touched)">
+        <div class="text-danger">Required</div>
+      </div>
+      <div
+        *ngIf="userNameExists()">
+        <div class="text-danger">That username is taken. Please choose another username</div>
+      </div>
+      
+    </div>
+
+  </div>
+  
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label class="control-label required" for="passWord">Password</label>
+      <input type="password" class="form-control" id="passWord" formControlName="passWord" >
+      <div
+        *ngIf="signupForm.controls.passWord.errors?.required && (signupForm.controls.passWord.dirty || signupForm.controls.passWord.touched)">
+        <div class="text-danger">Required</div>
+      </div>
+    </div>
+
+
+    <div class="form-group col-md-4">
+      <label class="control-label required" for="confirmPassword">Confirm Password</label>
+      <input type="password" class="form-control" id="confirmPassword" formControlName="passWordConf" (change)="passwordsDontMatch()">
+      <div
+        *ngIf="signupForm.controls.passWordConf.errors?.required && (signupForm.controls.passWordConf.dirty || signupForm.controls.passWordConf.touched)">
+        <div class="text-danger">Required</div>
+      </div>
+      <div
+        *ngIf="getPwm() ">
+        <div class="text-danger">The two passwords don't match.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label class="control-label required" for="name">Name</label>
+      <input type="text" class="form-control" id="name" formControlName="firstName">
+      <div
+        *ngIf="signupForm.controls.firstName.errors?.required && (signupForm.controls.firstName.dirty || signupForm.controls.firstName.touched)">
+        <div class="text-danger">Required</div>
+      </div>
+    </div>
+    <div class="form-group col-md-4">
+      <label class="control-label required" for="surname">Surname</label>
+      <input type="text" class="form-control" id="surname" formControlName="lastName"> 
+      <div
+        *ngIf="signupForm.controls.lastName.errors?.required && (signupForm.controls.lastName.dirty || signupForm.controls.lastName.touched) ">
+        <div class="text-danger">Required</div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label class="control-label required" for="phone">Phone</label>
+      <input type="number" class="form-control" id="phone" formControlName="phoneNumber">
+      <div
+        *ngIf="signupForm.controls.phoneNumber.errors?.required && (signupForm.controls.phoneNumber.dirty || signupForm.controls.phoneNumber.touched)">
+        <div class="text-danger">Required</div>
+      </div>
+    </div>
+
+  </div>
+  
+    <div class="form-group">
+      <label for="exampleFormControlFile1">Select a profile picture</label>
+      <input type="file" class="form-control-file" id="exampleFormControlFile1">
+    </div>
+  
+  
+
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="isHost">
+      <label class="form-check-label " for="gridCheck">
+        Sign up as host.
+      </label>
+    </div>
+  </div>
+  <!-- form end -->
+  <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">Sign up</button>
+  
+</form>
+
+
+<!-- <h3>{{ users[0]?.firstname }}</h3> -->
+<!-- <div *ngIf="trueth(signupForm.controls.userName.value)">
+  <h3>hi</h3>
+</div> -->

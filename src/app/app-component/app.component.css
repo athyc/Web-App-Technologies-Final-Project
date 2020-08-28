@@ -1,0 +1,23 @@
+/* @import "~bootstrap/dist/css/bootstrap.min.css"; */
+header {
+    background-color: rgb(44, 135, 158);
+    /* padding: 30px; */
+    /* text-align: center; */
+    font-size: 35px;
+    color: white;
+  }
+
+  #RegisterButton{
+    align-self: right!important
+  }
+  #logo{
+    margin-left: auto;
+  }
+
+  .control-label.required:after { 
+    color: #d00;
+    content: "*";
+    position: absolute;
+    margin-left: 5px;
+    /* top:7px; */
+  }

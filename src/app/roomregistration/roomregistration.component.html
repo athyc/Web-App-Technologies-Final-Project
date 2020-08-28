@@ -1,0 +1,165 @@
+<form class="p-3" [formGroup]="rrf" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+        <div class="form-group col-md-8">
+            <label class="control-label required" for="Name">Accomodation Name</label>
+            <input class="form-control" formControlName="Name">
+            <div *ngIf="rrf.controls.Name.errors?.required && (rrf.controls.Name.dirty || rrf.controls.Name.touched)">
+                <div class="text-danger">Required</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-8">
+            <label class="control-label required" for="Description">Description</label>
+            <textarea class="form-control" formControlName="Description" rows="5"></textarea>
+            <div
+                *ngIf="rrf.controls.Description.errors?.required && (rrf.controls.Description.dirty || rrf.controls.Description.touched)">
+                <div class="text-danger">Required</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">Allowed</div>
+    <div class="form-row">
+
+        <div class="form-group col-md-1">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="Pets">
+                <label class="form-check-label " for="gridCheck">
+                    Pets allowed
+                </label>
+            </div>
+
+
+        </div>
+
+        <div class="form-group col-md-1">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="Smoking">
+                <label class="form-check-label " for="gridCheck">
+                    Smoking allowed
+                </label>
+            </div>
+        </div>
+        <div class="form-group col-md-1">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="Gatherings">
+                <label class="form-check-label " for="gridCheck">
+                    Gatherings allowed
+                </label>
+            </div>
+        </div>
+
+    </div>
+    <div class="form-row">Has</div>
+    <div class="form-row">
+
+        <div class="form-group col-md-1">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="LivingRoom">
+                <label class="form-check-label " for="gridCheck">
+                    Living Room
+                </label>
+            </div>
+
+
+        </div>
+
+        <div class="form-group col-md-1">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="Wifi">
+                <label class="form-check-label " for="gridCheck">
+                    Wifi
+                </label>
+            </div>
+        </div>
+        <div class="form-group col-md-1">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="AC">
+                <label class="form-check-label " for="gridCheck">
+                    AC
+                </label>
+            </div>
+        </div>
+        <div class="form-group col-md-1">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="Heater">
+                <label class="form-check-label " for="gridCheck">
+                    Heater
+                </label>
+            </div>
+        </div>
+        <div class="form-group col-md-1">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="Kitchen">
+                <label class="form-check-label " for="gridCheck">
+                    Kitchen
+                </label>
+            </div>
+        </div>
+        <div class="form-group col-md-1">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="Parking">
+                <label class="form-check-label " for="gridCheck">
+                    Parking
+                </label>
+            </div>
+        </div>
+        <div class="form-group col-md-1">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="TV">
+                <label class="form-check-label " for="gridCheck">
+                    TV
+                </label>
+            </div>
+        </div>
+        <div class="form-group col-md-1">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="Elevator">
+                <label class="form-check-label " for="gridCheck">
+                    Elevator
+                </label>
+            </div>
+        </div>
+
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-8">
+            <select class="form-control form-control-sm" formControlName="Type">
+                <option>Private</option>
+                <option>Communal</option>
+                <option>House</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label class="control-label required" for="MinPrice">Minimum price per night</label>
+            <input type="number" class="form-control" id="MinPrice" formControlName="MinPrice">
+            <div
+                *ngIf="rrf.controls.MinPrice.errors?.required && (rrf.controls.MinPrice.dirty || rrf.controls.MinPrice.touched)">
+                <div class="text-danger">Required</div>
+            </div>
+        </div>
+
+        <div class="form-group col-md-2">
+            <label class="control-label required" for="RoomNumber">Number of Rooms</label>
+            <input type="number" class="form-control" id="RoomNumber" formControlName="RoomNumber">
+            <div
+                *ngIf="rrf.controls.RoomNumber.errors?.required && (rrf.controls.RoomNumber.dirty || rrf.controls.RoomNumber.touched)">
+                <div class="text-danger">Required</div>
+            </div>
+        </div>
+
+        <div class="form-group col-md-2">
+            <label class="control-label required" for="BathroomNumber">Number of Bathrooms</label>
+            <input type="number" class="form-control" id="BathroomNumber" formControlName="BathroomNumber">
+            <div *ngIf="rrf.controls.BathroomNumber.errors?.required && (rrf.controls.BathroomNumber.dirty || rrf.controls.BathroomNumber.touched)">
+                <div class="text-danger">Required</div>
+            </div>
+        </div>
+    
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!rrf.valid">Sign up</button>
+
+</form>
