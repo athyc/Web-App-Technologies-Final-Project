@@ -10,7 +10,7 @@ import { SignUpComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { ApprovalpageComponent } from './approvalpage/approvalpage.component';
 import { RoomregistrationComponent } from './roomregistration/roomregistration.component';
-
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +20,7 @@ import { RoomregistrationComponent } from './roomregistration/roomregistration.c
     RoomregistrationComponent
   ],
   imports: [
+    NgbModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
