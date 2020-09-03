@@ -83,10 +83,6 @@ export class SignUpComponent implements OnInit {
 
     return false
   }
-  getUsers(): void { //Observable<any> {
-    // this.apiService.getApiUsers().subscribe(item => this.users.push(item));
-    this.users$ = this.apiService.getApiUsers().subscribe(item => console.log(item))
-  }
   getUser(id: number): void { //Observable<any> {
     this.apiService.getApiUser(id).subscribe(item => console.log(item));
   }

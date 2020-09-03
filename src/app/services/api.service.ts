@@ -7,10 +7,11 @@ import { Amenity } from '../_models/amenity'
     providedIn: 'root'
 })
 export class ApiService {
-    globalUrl = "http://localhost:8080/"
-    amenityUrl = "api/amenity"
-    userUrl = "http://localhost:8080/users"
-    validatingURL = "api/usersEmailAndUsernames"
+    globalUrl = "http://localhost:8080/api"
+    amenityUrl = "/amenity"
+    userUrl = "/users"
+    validatingURL = "/usersEmailAndUsernames"
+
     constructor(private http: HttpClient) {
     }
     public getUNSandEmails(): Observable<any> {
@@ -20,16 +21,16 @@ export class ApiService {
     }
     public getApiUsers(): Observable<any> {
         return this.http
-            .get(this.userUrl);
+            .get(this.globalUrl + this.userUrl);
     }
     public getApiUser(id: number): Observable<any> {
         return this.http
-            .get(this.userUrl + "/" + id);
+            .get(this.globalUrl + this.userUrl + "/" + id);
     }
 
     public postApiUser(user): Observable<any> {
 
-        return this.http.post(this.userUrl, user);
+        return this.http.post(this.globalUrl + this.userUrl, user);
     }
     public amenity() {
         return this.http.get<Amenity[]>(this.globalUrl + this.amenityUrl)
@@ -37,4 +38,8 @@ export class ApiService {
     // private handleError(error: Response) {
     //     return Observable.throw(error.statusText);
     // }
+    public testAll(): Observable<any> {
+        return this.http
+            .get(this.globalUrl + '/test/all', { responseType: 'text' });
+    }
 }

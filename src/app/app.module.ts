@@ -17,6 +17,7 @@ import { MatFormFieldModule, MatInputModule, MatTableDataSource, MatTableModule 
 import {MatPaginator, MatPaginatorModule} from'@angular/material/paginator'
 import { from } from 'rxjs';
 import { authInterceptorProviders } from './services/auth.interceptor';
+import { DeniedComponent } from './denied/denied.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { authInterceptorProviders } from './services/auth.interceptor';
     LoginComponent,
     ApprovalpageComponent,
     RoomregistrationComponent,
-    SearchresultsComponent
+    SearchresultsComponent,
+    DeniedComponent
   ],
   imports: [
     NgbModule,

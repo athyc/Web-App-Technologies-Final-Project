@@ -48,7 +48,6 @@ export class SearchresultsComponent implements OnInit {
     console.log(AMENITIES)
 
 
-
   }
   clickity(x) {
     console.log(x)

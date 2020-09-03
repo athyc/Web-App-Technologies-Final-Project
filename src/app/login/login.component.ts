@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
       { username: this.loginform.controls.userName.value, password: this.loginform.controls.passWord.value }
       ).subscribe(
       data => {
-        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveToken(data.token);
         this.tokenStorage.saveUser(data);
 
         this.isLoginFailed = false;

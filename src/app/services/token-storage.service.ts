@@ -31,4 +31,22 @@ export class TokenStorageService {
   public getUser() {
     return JSON.parse(sessionStorage.getItem(USER_KEY));
   }
+
+  public isLoggedInUser(): boolean {
+    return this.getUser().roles.includes(Roles.User);
+  }
+
+  public isLoggedInHost(): boolean {
+    return this.getUser().roles.includes(Roles.Host) && this.getUser().hostApproved;
+  }
+
+  public isLoggedInAdmin(): boolean {
+    return this.getUser().roles.includes(Roles.Admin);
+  }
+}
+
+enum Roles {
+  User = "ROLE_USER",
+  Host = "ROLE_HOST",
+  Admin = "ROLE_ADMIN",
 }
