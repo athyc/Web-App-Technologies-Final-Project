@@ -2,7 +2,8 @@ import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@
 import { ApiService } from '../services/api.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { fail } from 'assert';
-import { Router } from '@angular/router';
+import { Router, RouteConfigLoadEnd } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'sign-up',
   templateUrl: './signup.component.html',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class SignUpComponent implements OnInit {
 
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(private apiService: ApiService, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     let tempUsers = this.apiService.getUNSandEmails()
@@ -31,7 +32,8 @@ export class SignUpComponent implements OnInit {
     lastName: new FormControl('', [Validators.required]),
     phoneNumber: new FormControl('', [Validators.required]),
     picture : new FormControl(''),
-    isHost:  new FormControl(''),
+    isHost:  new FormControl(false),
+    isUser: new FormControl(false),
   });
   userArray = []
   users$: any
@@ -88,23 +90,28 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit(): void {
-    let user = {
+    let userRolesArray = []
+    if (this.signupForm.controls.isUser.value || !this.signupForm.controls.isHost.value) {
+      userRolesArray.push("user")
+    }
+    if (this.signupForm.controls.isHost.value) {
+      userRolesArray.push("host")
+    }
+    const user = {
       "firstName": this.signupForm.controls.firstName.value,
       "lastName": this.signupForm.controls.lastName.value,
       "username": this.signupForm.controls.userName.value,
       "email" : this.signupForm.controls.userEmail.value,
       "password" : this.signupForm.controls.passWord.value,
       "phoneNumber" : this.signupForm.controls.phoneNumber.value,
-      "ishost" : this.signupForm.controls.isHost.value,
-      "picture" : this.signupForm.controls.picture.value
+      "picture" : this.signupForm.controls.picture.value,
+      "role" : userRolesArray,
     }
-    if(user.ishost == ""){
-      user.ishost = false
-    }
+    
     console.log(user);
-    let response = this.apiService.postApiUser(user).subscribe(item => console.log(item));
+    let response = this.authService.register(user).subscribe(item => console.log(item));
     console.log("success!")
-    if(user.ishost){
+    if(this.signupForm.controls.isHost.value){
         this.router.navigate(['/apc'])
     }else{
       this.router.navigate(['/login'])

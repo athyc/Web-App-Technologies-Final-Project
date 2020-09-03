@@ -107,6 +107,12 @@
         Sign up as host.
       </label>
     </div>
+    <div class="form-check" *ngIf="signupForm.controls.isHost.value">
+      <input class="form-check-input" type="checkbox" id="grid2Check" formControlName="isUser">
+      <label class="form-check-label " for="grid2Check">
+        Sign up as user too.
+      </label>
+    </div>
   </div>
   <!-- form end -->
   <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">Sign up</button>
