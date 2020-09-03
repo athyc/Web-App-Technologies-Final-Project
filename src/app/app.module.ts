@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app-component/app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ApiService } from './api.service';
+import { ApiService } from './services/api.service';
 import { SignUpComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { ApprovalpageComponent } from './approvalpage/approvalpage.component';
@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule, MatInputModule, MatTableDataSource, MatTableModule } from '@angular/material';
 import {MatPaginator, MatPaginatorModule} from'@angular/material/paginator'
 import { from } from 'rxjs';
+import { authInterceptorProviders } from './services/auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,7 @@ import { from } from 'rxjs';
     NgbModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
+    HttpClientModule,  
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
@@ -38,7 +39,7 @@ import { from } from 'rxjs';
     MatTableModule,
     MatPaginatorModule
   ],
-  providers: [ApiService],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

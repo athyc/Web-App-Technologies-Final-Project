@@ -6,18 +6,15 @@
     <form class="p-3" [formGroup]="loginform" (ngSubmit)="onSubmit()">
         <div class="form-row">
             <div class="form-group col-md-4">
-                <label class="control-label required" for="userEmail">Email</label>
-                <input class="form-control" id="userEmail" formControlName="userEmail">
+                <label class="control-label required" for="userName">UN</label>
+                <input class="form-control" id="userName" formControlName="userName">
                 <div
-                    *ngIf="loginform.controls.userEmail.errors?.required && (loginform.controls.userEmail.dirty || loginform.controls.userEmail.touched)">
+                    *ngIf="loginform.controls.userName.errors?.required && (loginform.controls.userName.dirty || loginform.controls.userName.touched)">
                     <div class="text-danger">Required</div>
                 </div>
-                <div
-                    *ngIf="loginform.controls.userEmail.errors?.email && (loginform.controls.userEmail.dirty || loginform.controls.userEmail.touched)">
-                    <div class="text-danger">Not an email</div>
-                </div>
+                
                 <div *ngIf="!emailExists()">
-                    <div class="text-danger">That email is unregistered. try signing up</div>
+                    <div class="text-danger">That username is unregistered. try signing up</div>
                 </div>
             </div>
         </div>
@@ -33,6 +30,15 @@
             </div>
         </div>
         <button type="submit" class="btn btn-primary" [disabled]="!loginform.valid">Log in</button>
+        <div class="form-group">
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="isLoginFailed"
+          >
+            Login failed: {{ errorMessage }}
+          </div>
+        </div>
     </form>
 
 </div>

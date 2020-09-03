@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NgbDateStruct, NgbCalendar, NgbDate, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 import { from } from 'rxjs';
-import { ApiService } from '../api.service';
+import { ApiService } from '../services/api.service';
 @Component({
   selector: 'app-roomregistration',
   templateUrl: './roomregistration.component.html',

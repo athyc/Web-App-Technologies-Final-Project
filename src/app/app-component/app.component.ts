@@ -1,32 +1,36 @@
-import { Component } from '@angular/core';
-import { ApiService } from '../api.service';
+import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from '../services/token-storage.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  i = 0;
+export class AppComponent implements OnInit {
+  private roles: string[];
+  isLoggedIn = false;
+  showAdminBoard = false;
+  showModeratorBoard = false;
+  username: string;
 
-  title = 'angular-take3';
+  constructor(private tokenStorageService: TokenStorageService) { }
 
-  userUrl = "http://localhost:8080/users"
+  ngOnInit() {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
 
-  constructor(private apiService: ApiService) { }
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
 
-  getUsers(): void { //Observable<any> {
-    this.apiService.getApiUsers().subscribe(item => console.log(item));
-  }
-  postUser(user) {
-    user = {
-      "firstName": "Bilbo",
-      "lastName": "Baggins",
-      "username": "bilbob" + this.i
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+
+      this.username = user.username;
     }
-    this.i++;
-    this.apiService.postApiUser(user).subscribe(item => console.log(item));
   }
 
-
+  logout() {
+    this.tokenStorageService.signOut();
+    window.location.reload();
+  }
 }
