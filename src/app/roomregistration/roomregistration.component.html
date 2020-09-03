@@ -1,4 +1,4 @@
-<form class="p-3" [formGroup]="rrf" (ngSubmit)="onSubmit()">
+<form class="p-3" [formGroup]="rrf" (ngSubmit)="onSubmit()" *ngIf="canView">
     <div class="form-row">
         <div class="form-group col-md-8">
             <label class="control-label required" for="Name">Accomodation Name</label>
@@ -264,3 +264,5 @@
     <button style="z-index: -1;" type="submit" class="btn btn-primary" [disabled]="!rrf.valid">Sign up</button>
 
 </form>
+
+<app-denied *ngIf="!canView"></app-denied>

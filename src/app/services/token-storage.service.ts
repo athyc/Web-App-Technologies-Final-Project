@@ -36,7 +36,7 @@ export class TokenStorageService {
     return this.getUser().roles.includes(Roles.User);
   }
 
-  public isLoggedInHost(): boolean {
+  public isLoggedInAndApprovedHost(): boolean {
     return this.getUser().roles.includes(Roles.Host) && this.getUser().hostApproved;
   }
 

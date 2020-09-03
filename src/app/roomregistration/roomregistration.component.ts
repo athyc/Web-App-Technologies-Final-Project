@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NgbDateStruct, NgbCalendar, NgbDate, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 import { from } from 'rxjs';
 import { ApiService } from '../services/api.service';
+import { TokenStorageService } from '../services/token-storage.service';
 @Component({
   selector: 'app-roomregistration',
   templateUrl: './roomregistration.component.html',
@@ -15,7 +16,9 @@ export class RoomregistrationComponent implements OnInit {
   fromDate: NgbDate | null;
   toDate: NgbDate | null;
 
-  constructor(private calendar: NgbCalendar, public formatter: NgbDateParserFormatter, private apiService: ApiService) {
+  canView: boolean;
+
+  constructor(private calendar: NgbCalendar, public formatter: NgbDateParserFormatter, private apiService: ApiService, private tokenStorageService: TokenStorageService) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
   }
@@ -57,6 +60,7 @@ export class RoomregistrationComponent implements OnInit {
     }
   }
   ngOnInit() {
+    this.canView = this.tokenStorageService.isLoggedInAndApprovedHost();
   }
   rrf = new FormGroup({
     Name: new FormControl('', [Validators.required,]),
