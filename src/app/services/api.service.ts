@@ -11,6 +11,7 @@ export class ApiService {
     globalUrl = "http://localhost:8080/api"
     amenityUrl = "/amenity"
     userUrl = "/users"
+    hostAprroval = "/hostApproval"
     validatingURL = "/usersEmailAndUsernames"
 
     constructor(private http: HttpClient) {
@@ -41,6 +42,15 @@ export class ApiService {
 
     public postAmenity(amenity, userId) {
         return this.http.post(this.globalUrl + this.amenityUrl + '/' + userId + '/newamenity', amenity).subscribe(item => console.log(item))
+    }
+    public deleteuser(id){
+        console.log("here")
+        return this.http.delete(this.globalUrl+this.userUrl+'/'+id).subscribe(item => console.log(item))
+    }
+    public putuser(id, user){
+        console.log("here!")
+
+        return this.http.put(this.globalUrl+this.hostAprroval+'/'+id,user).subscribe()
     }
 
     // private handleError(error: Response) {

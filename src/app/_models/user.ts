@@ -1,8 +1,11 @@
-﻿export class User {
+﻿import { stringify } from 'querystring';
+
+export class User {
     id: number;
     username: string;
     password: string;
     firstName: string;
     lastName: string;
     token: string;
+    roles:[];
 }

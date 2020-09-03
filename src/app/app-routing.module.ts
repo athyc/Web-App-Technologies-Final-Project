@@ -7,13 +7,15 @@ import {RoomregistrationComponent} from './roomregistration/roomregistration.com
 import { from } from 'rxjs';
 import { SearchresultsComponent } from './searchresults/searchresults.component';
 import { DeniedComponent } from './denied/denied.component';
+import { AdminboardComponent } from './adminboard/adminboard.component';
 const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent },
   { path: 'login', component: LoginComponent },
   { path: 'apc', component : ApprovalpageComponent},
   {path: 'rrc', component: RoomregistrationComponent},
   {path: 'sr', component: SearchresultsComponent},
-  {path:'denied', component: DeniedComponent}
+  {path:'denied', component: DeniedComponent},
+  {path:'adminboard',component:AdminboardComponent}
 ];
 
 @NgModule({
