@@ -46,7 +46,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -128,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "angular-take3"
+  "defaultProject": "angular-take3",
+  "cli": {
+    "analytics": false
+  }
 }

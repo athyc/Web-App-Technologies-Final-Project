@@ -33,15 +33,15 @@ export class TokenStorageService {
   }
 
   public isLoggedInUser(): boolean {
-    return this.getUser().roles.includes(Roles.User);
+    return this.getUser()?.roles.includes(Roles.User);
   }
 
   public isLoggedInAndApprovedHost(): boolean {
-    return this.getUser().roles.includes(Roles.Host) && this.getUser().hostApproved;
+    return this.getUser()?.roles.includes(Roles.Host) && this.getUser().hostApproved;
   }
 
   public isLoggedInAdmin(): boolean {
-    return this.getUser().roles.includes(Roles.Admin);
+    return this.getUser()?.roles.includes(Roles.Admin);
   }
 }
 
