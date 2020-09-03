@@ -9,6 +9,58 @@
         </div>
     </div>
     <div class="form-row">
+        <div class="form-group col-md-1">
+            <label class="control-label required" for="Geographic Appartment">Geographic Appartment</label>
+            <input class="form-control" formControlName="GeographicAppartment">
+            <div
+                *ngIf="rrf.controls.GeographicAppartment.errors?.required && (rrf.controls.GeographicAppartment.dirty || rrf.controls.GeographicAppartment.touched)">
+                <div class="text-danger">Required</div>
+            </div>
+        </div>
+        <div class="form-group col-md-1">
+            <label class="control-label required" for="Region">Region</label>
+            <input class="form-control" formControlName="Region" >
+            <div *ngIf="rrf.controls.Region.errors?.required && (rrf.controls.Region.dirty || rrf.controls.Region.touched)">
+        <div class="text-danger">Required</div>
+        </div>
+        </div>
+        <div class="form-group col-md-1">
+            <label class="control-label required" for="City">City</label>
+            <input class="form-control" formControlName="City" >
+            <div *ngIf="rrf.controls.City.errors?.required && (rrf.controls.City.dirty || rrf.controls.City.touched)">
+        <div class="text-danger">Required</div>
+        </div>
+        </div>
+        <div class="form-group col-md-1">
+            <label class="control-label required" for="Municipality">Municipality</label>
+            <input class="form-control" formControlName="Municipality" >
+            <div *ngIf="rrf.controls.Municipality.errors?.required && (rrf.controls.Municipality.dirty || rrf.controls.Municipality.touched)">
+        <div class="text-danger">Required</div>
+        </div>
+        </div>
+        <div class="form-group col-md-1">
+            <label class="control-label required" for="Road">Road</label>
+            <input class="form-control" formControlName="Road" >
+            <div *ngIf="rrf.controls.Road.errors?.required && (rrf.controls.Road.dirty || rrf.controls.Road.touched)">
+        <div class="text-danger">Required</div>
+        </div>
+        </div>
+        <div class="form-group col-md-1">
+            <label class="control-label required" for="Number">Number</label>
+            <input type="number" class="form-control" formControlName="Number" >
+            <div *ngIf="rrf.controls.Number.errors?.required && (rrf.controls.Number.dirty || rrf.controls.Number.touched)">
+        <div class="text-danger">Required</div>
+        </div>
+        </div>
+        <div class="form-group col-md-1">
+            <label class="control-label required" for="ZipCode">Zip Code</label>
+            <input class="form-control" type="number" formControlName="ZipCode" >
+            <div *ngIf="rrf.controls.ZipCode.errors?.required && (rrf.controls.ZipCode.dirty || rrf.controls.ZipCode.touched)">
+        <div class="text-danger">Required</div>
+        </div>
+        </div>
+    </div>
+    <div class="form-row">
         <div class="form-group col-md-8">
             <label class="control-label required" for="Description">Description</label>
             <textarea class="form-control" formControlName="Description" rows="5"></textarea>
@@ -122,6 +174,7 @@
         </div>
 
     </div>
+    <div class="form-row">Type Of Ammenity</div>
     <div class="form-row">
         <div class="form-group col-md-8">
             <select class="form-control form-control-sm" formControlName="Type">
@@ -158,15 +211,22 @@
                 <div class="text-danger">Required</div>
             </div>
         </div>
-        
+        <div class="form-group col-md-2">
+            <label class="control-label required" for="BedNumber">Number of Beds</label>
+            <input type="number" class="form-control" id="BedNumber" formControlName="BedNumber">
+            <div
+                *ngIf="rrf.controls.BedNumber.errors?.required && (rrf.controls.BedNumber.dirty || rrf.controls.BedNumber.touched)">
+                <div class="text-danger">Required</div>
+            </div>
+        </div>
     </div>
 
     <div class="form-row">
         <div class="form-group hidden">
             <div class="input-group">
-                <input name="datepicker" class="form-control" ngbDatepicker #datepicker="ngbDatepicker" formControlName="FromDate"
-                    [autoClose]="'outside'" (dateSelect)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t"
-                    outsideDays="hidden" [startDate]="fromDate!">
+                <input name="datepicker" class="form-control" ngbDatepicker #datepicker="ngbDatepicker"
+                    formControlName="FromDate" [autoClose]="'outside'" (dateSelect)="onDateSelection($event)"
+                    [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden" [startDate]="fromDate!">
                 <ng-template #t let-date let-focused="focused">
                     <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)"
                         [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date"
@@ -197,7 +257,7 @@
             </div>
         </div>
         <div *ngIf="validateDates()">
-          <div class="text-danger">INVALID</div>
+            <div class="text-danger">INVALID</div>
         </div>
     </div>
 

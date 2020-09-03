@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import{NgbDateStruct, NgbCalendar, NgbDate, NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateStruct, NgbCalendar, NgbDate, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 import { from } from 'rxjs';
+import { ApiService } from '../api.service';
 @Component({
   selector: 'app-roomregistration',
   templateUrl: './roomregistration.component.html',
@@ -14,7 +15,7 @@ export class RoomregistrationComponent implements OnInit {
   fromDate: NgbDate | null;
   toDate: NgbDate | null;
 
-  constructor(private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
+  constructor(private calendar: NgbCalendar, public formatter: NgbDateParserFormatter, private apiService: ApiService) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
   }
@@ -46,11 +47,12 @@ export class RoomregistrationComponent implements OnInit {
     const parsed = this.formatter.parse(input);
     return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
   }
-  validateDates(): boolean{
-    if(this.toDate==null){
-      this.rrf.controls["FromDate"].setErrors({'incorrect': true});
+  validateDates(): boolean {
+    if (this.toDate == null) {
+      this.rrf.controls["FromDate"].setErrors({ 'incorrect': true });
       return true
-    }else{
+    } else {
+      this.rrf.controls["FromDate"].setErrors(null);
       return false
     }
   }
@@ -58,7 +60,17 @@ export class RoomregistrationComponent implements OnInit {
   }
   rrf = new FormGroup({
     Name: new FormControl('', [Validators.required,]),
+
+    GeographicAppartment: new FormControl('', [Validators.required,]),
+    Region: new FormControl('', [Validators.required,]),
+    City: new FormControl('', [Validators.required,]),
+    Municipality: new FormControl('', [Validators.required,]),
+    Road: new FormControl('', [Validators.required,]),
+    Number: new FormControl('', [Validators.required,]),
+    ZipCode: new FormControl('', [Validators.required,]),
+
     Description: new FormControl('', [Validators.required]),
+    // Address: new FormControl('', [Validators.required,]),
     Pets: new FormControl(''),
     Smoking: new FormControl(''),
     Gatherings: new FormControl(''),
@@ -73,15 +85,16 @@ export class RoomregistrationComponent implements OnInit {
     Type: new FormControl('', [Validators.required,]),
     MinPrice: new FormControl('', [Validators.required]),
     RoomNumber: new FormControl('', [Validators.required]),
+    BedNumber: new FormControl('', [Validators.required]),
     BathroomNumber: new FormControl('', [Validators.required]),
     FromDate: new FormControl('', [Validators.required]),
-    
+
   })
-  onSubmit(): void { 
+  onSubmit(): void {
     console.log(this.fromDate)
     console.log(this.toDate)
-    
-    
+
+
   }
 
 }

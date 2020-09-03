@@ -6,7 +6,9 @@ header {
     font-size: 35px;
     color: white;
   }
-
+  table {
+    width: 100%;
+  }
   #RegisterButton{
     align-self: right!important
   }
@@ -44,3 +46,13 @@ header {
   .custom-day.faded {
     background-color: rgba(2, 117, 216, 0.5);
   }
+
+table th {
+    font-size:large ;
+    color: rgb(0, 151, 221);
+  }
+
+  table tr {
+    cursor: pointer
+  }
+  

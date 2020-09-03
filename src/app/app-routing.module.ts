@@ -5,11 +5,13 @@ import { LoginComponent } from './login/login.component';
 import {ApprovalpageComponent} from './approvalpage/approvalpage.component'
 import {RoomregistrationComponent} from './roomregistration/roomregistration.component'
 import { from } from 'rxjs';
+import { SearchresultsComponent } from './searchresults/searchresults.component';
 const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent },
   { path: 'login', component: LoginComponent },
   { path: 'apc', component : ApprovalpageComponent},
-  {path: 'rrc', component: RoomregistrationComponent}
+  {path: 'rrc', component: RoomregistrationComponent},
+  {path: 'sr', component: SearchresultsComponent}
 ];
 
 @NgModule({
