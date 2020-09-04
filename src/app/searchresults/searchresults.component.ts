@@ -7,6 +7,8 @@ import { MatTableModule } from '@angular/material/table';
 
 import { Amenity } from '../_models/amenity';
 import { from } from 'rxjs';
+import { Router } from '@angular/router';
+import { TokenStorageService } from '../services/token-storage.service';
 @Component({
   selector: 'app-searchresults',
   templateUrl: './searchresults.component.html',
@@ -25,9 +27,8 @@ export class SearchresultsComponent implements OnInit {
   'roomnumber',
   'bathroomnumber'
 ];
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private router: Router, private tokenStorageService: TokenStorageService) {
     this.dataSource.paginator = this.paginator;
-    console.log(AMENITIES)
   }
 
   dataSource = new MatTableDataSource<Amenity>();
@@ -45,40 +46,12 @@ export class SearchresultsComponent implements OnInit {
       });
     console.log(this.amenities)
     // this.amenities.forEach((def: Amenity)=>{AMENITIES.push(def)})
-    console.log(AMENITIES)
+  
 
 
   }
   clickity(x) {
     console.log(x)
+    this.router.navigate(['/amenity/'+x])
   }
 }
-let AMENITIES: Amenity[] = [{
-  id: 1,
-  name: "somevalue",
-  geographicappartment: "somevaldsfsue",
-  region: "somevalue",
-  city: "somevalue",
-  municipality: "somevalue",
-  road: "somevalue",
-  number: 1,
-  zipcode: 1,
-  description: "somevalue",
-  pets: true,
-  smoking: true,
-  gatherings: true,
-  livingroom: true,
-  wifi: true,
-  ac: true,
-  heater: true,
-  kitchen: true,
-  parking: true,
-  tv: true,
-  elevator: true,
-  type: "somevalue",
-  minprice: 1,
-  roomnumber: 1,
-  bathroomnumber: 1,
-  fromdate: "somevalue",
-  todate: "somevalue",
-},];

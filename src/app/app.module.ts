@@ -19,6 +19,11 @@ import { from } from 'rxjs';
 import { authInterceptorProviders } from './services/auth.interceptor';
 import { DeniedComponent } from './denied/denied.component';
 import { AdminboardComponent } from './adminboard/adminboard.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AmenityPageComponent } from './amenity-page/amenity-page.component';
+import { AmenityeditComponent } from './amenityedit/amenityedit.component';
+import { UsereditComponent } from './useredit/useredit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +33,12 @@ import { AdminboardComponent } from './adminboard/adminboard.component';
     RoomregistrationComponent,
     SearchresultsComponent,
     DeniedComponent,
-    AdminboardComponent
+    AdminboardComponent,
+    MyProfileComponent,
+    UserProfileComponent,
+    AmenityPageComponent,
+    AmenityeditComponent,
+    UsereditComponent
   ],
   imports: [
     NgbModule,

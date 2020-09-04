@@ -8,6 +8,11 @@ import { from } from 'rxjs';
 import { SearchresultsComponent } from './searchresults/searchresults.component';
 import { DeniedComponent } from './denied/denied.component';
 import { AdminboardComponent } from './adminboard/adminboard.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AmenityPageComponent } from './amenity-page/amenity-page.component';
+import { AmenityeditComponent } from './amenityedit/amenityedit.component';
+import { UsereditComponent } from './useredit/useredit.component';
 const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent },
   { path: 'login', component: LoginComponent },
@@ -15,7 +20,12 @@ const routes: Routes = [
   {path: 'rrc', component: RoomregistrationComponent},
   {path: 'sr', component: SearchresultsComponent},
   {path:'denied', component: DeniedComponent},
-  {path:'adminboard',component:AdminboardComponent}
+  {path:'adminboard',component:AdminboardComponent},
+  {path:'myprofile',component:MyProfileComponent},
+  {path:'profile/:id',component:UserProfileComponent},
+  {path:'amenity/:id',component:AmenityPageComponent},
+  {path:'amenityedit/:id',component:AmenityeditComponent},
+  {path:'useredit/:id',component:UsereditComponent},
 ];
 
 @NgModule({

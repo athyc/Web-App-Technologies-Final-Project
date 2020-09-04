@@ -1,0 +1,11 @@
+<app-denied *ngIf="!canView"></app-denied>
+<app-denied *ngIf="!userdet"></app-denied>
+<div *ngIf="canView && userdet">
+    <p>MY PROFILE</p>
+    <p>Name: {{userdet?.firstName}}</p>
+    <p>Last Name: {{userdet?.lastName}}</p>
+    <p>Email: {{userdet?.email}}</p>
+    <p>Phone: {{userdet?.phoneNumber}}</p>
+    <p>Username: {{userdet?.username}}</p>
+</div>
+

@@ -10,6 +10,8 @@ import { TokenStorageService } from './token-storage.service';
 export class ApiService {
     globalUrl = "http://localhost:8080/api"
     amenityUrl = "/amenity"
+    useramenityUrl = "/useramenity"
+    editamenity="/editamenity"
     userUrl = "/users"
     hostAprroval = "/hostApproval"
     validatingURL = "/usersEmailAndUsernames"
@@ -35,13 +37,27 @@ export class ApiService {
 
         return this.http.post(this.globalUrl + this.userUrl, user);
     }
-
+    public edituser(user,uid){
+        return this.http.put(this.globalUrl+this.userUrl+'/'+uid,user).subscribe(item => console.log(item))
+    }
     public amenity() {
         return this.http.get<Amenity[]>(this.globalUrl + this.amenityUrl)
+    }
+    public getUserAmenities(id){
+        return this.http.get<Amenity[]>(this.globalUrl + this.useramenityUrl+'/'+id)
+    }
+    public getamenity(id) {
+        return this.http.get<Amenity>(this.globalUrl + this.amenityUrl+'/'+id)
     }
 
     public postAmenity(amenity, userId) {
         return this.http.post(this.globalUrl + this.amenityUrl + '/' + userId + '/newamenity', amenity).subscribe(item => console.log(item))
+    }
+    public putAmenity(amenity, id){
+        return this.http.put(this.globalUrl+this.editamenity+'/'+id,amenity).subscribe(item => console.log(item))
+    }
+    public delAmenity(id){
+        return this.http.delete(this.globalUrl+this.amenityUrl+'/'+id).subscribe(item => console.log(item))
     }
     public deleteuser(id){
         console.log("here")

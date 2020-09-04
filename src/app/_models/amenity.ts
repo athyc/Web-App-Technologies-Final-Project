@@ -24,6 +24,7 @@ export interface Amenity {
     minprice: number;
     roomnumber: number;
     bathroomnumber: number;
+    bednumber:number;
     fromdate: string;
     todate: string;
 }

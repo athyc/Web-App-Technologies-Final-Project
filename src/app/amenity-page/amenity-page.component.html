@@ -1,0 +1,34 @@
+<app-denied *ngIf="!canView"></app-denied>
+<app-denied *ngIf="!myItem"></app-denied>
+<div *ngIf="canView && myItem">
+    <p>MY AMENITY</p>
+
+    <p> geographicappartment : {{ myItem?.geographicappartment }} </p>
+    <p> region : {{ myItem?.region }} </p>
+    <p> city : {{ myItem?.city }} </p>
+    <p> municipality : {{ myItem?.municipality }} </p>
+    <p> road : {{ myItem?.road }} </p>
+    <p> number : {{ myItem?.number }} </p>
+    <p> zipcode : {{ myItem?.zipcode }} </p>
+    <p> description : {{ myItem?.description }} </p>
+    <p> pets : {{ myItem?.pets }} </p>
+    <p> smoking : {{ myItem?.smoking }} </p>
+    <p> gatherings : {{ myItem?.gatherings }} </p>
+    <p> livingroom : {{ myItem?.livingroom }} </p>
+    <p> wifi : {{ myItem?.wifi }} </p>
+    <p> ac : {{ myItem?.ac }} </p>
+    <p> heater : {{ myItem?.heater }} </p>
+    <p> kitchen : {{ myItem?.kitchen }} </p>
+    <p> parking : {{ myItem?.parking }} </p>
+    <p> tv : {{ myItem?.tv }} </p>
+    <p> elevator : {{ myItem?.elevator }} </p>
+    <p> type : {{ myItem?.type }} </p>
+    <p> minprice : {{ myItem?.minprice }} </p>
+    <p> roomnumber : {{ myItem?.roomnumber }} </p>
+    <p> bathroomnumber : {{ myItem?.bathroomnumber }} </p>
+    <p> fromdate : {{ myItem?.fromdate }} </p>
+    <p> todate : {{ myItem?.todate }} </p>
+    <button type="submit" class="btn btn-primary" (click)="clickity()">Book it!</button>
+<!-- add the reviews too -->
+<!-- try to addd a form -->
+</div>

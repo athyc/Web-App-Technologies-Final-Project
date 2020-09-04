@@ -2,8 +2,9 @@ import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@
 import { ApiService } from '../services/api.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { fail } from 'assert';
-import { Router, RouteConfigLoadEnd } from '@angular/router';
+import { Router, RouteConfigLoadEnd, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { TokenStorageService } from '../services/token-storage.service';
 @Component({
   selector: 'sign-up',
   templateUrl: './signup.component.html',
@@ -12,25 +13,29 @@ import { AuthService } from '../services/auth.service';
 export class SignUpComponent implements OnInit {
 
 
-  constructor(private apiService: ApiService, private authService: AuthService, private router: Router) { }
-
+  constructor(private apiService: ApiService, private authService: AuthService, private router: Router, private tokenStorageService: TokenStorageService, private route: ActivatedRoute) { }
+y:number
   ngOnInit(): void {
     let tempUsers = this.apiService.getUNSandEmails()
     tempUsers.subscribe(item => this.userArray = item)
     console.log(this.userArray)
     //this.users$ = this.apiService.getApiUsers()
+    const id = this.route.snapshot.paramMap.get('id');
+    var y: number = +id;
+    this.y=y
+
   }
 
   signupForm = new FormGroup({
-    userEmail: new FormControl('', [Validators.required, Validators.email]),
-    userName: new FormControl('', [Validators.required]),
+    userEmail: new FormControl('', [ Validators.email]),
+    userName: new FormControl('', ),
 
-    passWord: new FormControl('', [Validators.required]),
-    passWordConf: new FormControl('', [Validators.required]),
+    passWord: new FormControl('', ),
+    passWordConf: new FormControl('', ),
 
-    firstName: new FormControl('', [Validators.required]),
-    lastName: new FormControl('', [Validators.required]),
-    phoneNumber: new FormControl('', [Validators.required]),
+    firstName: new FormControl('', ),
+    lastName: new FormControl('', ),
+    phoneNumber: new FormControl('', ),
     picture : new FormControl(''),
     isHost:  new FormControl(false),
     isUser: new FormControl(false),

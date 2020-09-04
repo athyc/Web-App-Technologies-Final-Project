@@ -7,10 +7,10 @@ import { TokenStorageService } from '../services/token-storage.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-roomregistration',
-  templateUrl: './roomregistration.component.html',
+  templateUrl: './amenityedit.component.html',
   styleUrls: ['../app-component/app.component.css']
 })
-export class RoomregistrationComponent implements OnInit {
+export class AmenityEditComponent implements OnInit {
 
   hoveredDate: NgbDate | null = null;
 
@@ -20,7 +20,7 @@ export class RoomregistrationComponent implements OnInit {
   userId: number;
   canView: boolean;
 
-  constructor(private calendar: NgbCalendar, public formatter: NgbDateParserFormatter, private apiService: ApiService, private tokenStorageService: TokenStorageService, private router: Router) {
+  constructor(private calendar: NgbCalendar, public formatter: NgbDateParserFormatter, private apiService: ApiService, private tokenStorageService: TokenStorageService,private router: Router) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
     this.userId = this.tokenStorageService.getUser()?.id;
@@ -142,6 +142,7 @@ export class RoomregistrationComponent implements OnInit {
 
     this.apiService.postAmenity(newAmenity, this.userId);
     this.router.navigate(['/myprofile'])
+    
   }
 
 }
