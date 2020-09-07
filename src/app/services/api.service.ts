@@ -68,14 +68,6 @@ export class ApiService {
 
         return this.http.put(this.globalUrl+this.hostAprroval+'/'+id,user).subscribe()
     }
-    public getbookings(): Observable<any>{
-        return this.http.get(this.globalUrl+"/bookings")
-    }
-
-    public getxml(){
-
-        return this.http.get(this.globalUrl+"/xmlexport",{ responseType: 'text'});
-    }
 
     // private handleError(error: Response) {
     //     return Observable.throw(error.statusText);
