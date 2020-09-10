@@ -4,6 +4,7 @@ import { ApiService } from '../services/api.service';
 import { first } from 'rxjs/operators';
 import { User } from '../_models/user';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { Booking } from '../_models/booking';
 
 @Component({
   selector: 'app-adminboard',
@@ -70,5 +71,16 @@ export class AdminboardComponent implements OnInit {
     return b
 
   }
+  booking: Booking[]=[]
+  getBookings(){
+    this.apiService.getbookings().pipe(first()).subscribe(item=>{console.log(item);this.booking=item})
+    console.log(this.booking[0].id)
+  }
+  path:string
+  xmlexporter(){
+    this.apiService.getxml().subscribe(item=>{console.log(item);this.path=item.toString()});
+    console.log(this.path)
+  }
 }
+
 let DATA = []

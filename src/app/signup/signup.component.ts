@@ -28,14 +28,14 @@ y:number
 
   signupForm = new FormGroup({
     userEmail: new FormControl('', [ Validators.email]),
-    userName: new FormControl('', ),
+    userName: new FormControl('', [Validators.required]),
 
-    passWord: new FormControl('', ),
-    passWordConf: new FormControl('', ),
+    passWord: new FormControl('', [Validators.required]),
+    passWordConf: new FormControl('', [Validators.required]),
 
-    firstName: new FormControl('', ),
-    lastName: new FormControl('', ),
-    phoneNumber: new FormControl('', ),
+    firstName: new FormControl('', [Validators.required]),
+    lastName: new FormControl('',[Validators.required] ),
+    phoneNumber: new FormControl('', [Validators.required]),
     picture : new FormControl(''),
     isHost:  new FormControl(false),
     isUser: new FormControl(false),
