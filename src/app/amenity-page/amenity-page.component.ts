@@ -3,6 +3,7 @@ import { ApiService } from '../services/api.service';
 import { TokenStorageService } from '../services/token-storage.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Amenity } from '../_models/amenity';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-amenity-page',
@@ -12,7 +13,7 @@ import { Amenity } from '../_models/amenity';
 export class AmenityPageComponent implements OnInit {
   canView: boolean;
   myItem: Amenity;
-
+  rrf = new FormGroup({})
   constructor(private apiService: ApiService, private tokenStorageService: TokenStorageService, private router: Router, private route: ActivatedRoute) { }
   ngOnInit(): void {
     this.canView = this.tokenStorageService.isLoggedInUser()
@@ -25,5 +26,7 @@ export class AmenityPageComponent implements OnInit {
   clickity() {
     //todo add bookings and reviews
   }
-
+  onSubmit(){
+    
+  }
 }
