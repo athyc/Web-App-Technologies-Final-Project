@@ -29,6 +29,24 @@
     <p> fromdate : {{ myItem?.fromdate }} </p>
     <p> todate : {{ myItem?.todate }} </p>
     <button type="submit" class="btn btn-primary" (click)="clickity()">Book it!</button>
-<!-- add the reviews too -->
-<!-- try to addd a form -->
+
+    <div>
+        <form class="p-3" [formGroup]="rrf" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+                <div class="form-group col-md-8">
+                    <label class="control-label required" for="Description">Description</label>
+                    <textarea class="form-control" formControlName="Description" rows="5"></textarea>
+                    <div
+                        *ngIf="rrf.controls.Description.errors?.required && (rrf.controls.Description.dirty || rrf.controls.Description.touched)">
+                        <div class="text-danger">Required</div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" (click)="clickity()">Review!</button>
+
+            </div>
+        </form>
+
+    </div>
+    <!-- add the reviews too -->
+    <!-- try to addd a form -->
 </div>
