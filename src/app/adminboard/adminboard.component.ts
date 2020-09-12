@@ -35,7 +35,8 @@ export class AdminboardComponent implements OnInit {
     }
   }
   deleteRow(id) {
-    this.apiService.deleteuser(id)
+    this.apiService.deleteuser(id);
+    setTimeout(() => window.location.reload(), 200);
   }
   approveHost(id, user) {
     console.log("what")
@@ -50,6 +51,7 @@ export class AdminboardComponent implements OnInit {
       "role": user.roles,
     }
     this.apiService.putuser(id, postable)
+    setTimeout(() => window.location.reload(), 200);
   }
   isHost(a): boolean {
     let rv = false

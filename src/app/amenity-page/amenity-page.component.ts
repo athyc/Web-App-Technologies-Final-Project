@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { TokenStorageService } from '../services/token-storage.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Amenity } from '../_models/amenity';
 import { FormGroup } from '@angular/forms';
+import { Review } from '../_models/review';
+import { MatTableDataSource, MatPaginator } from '@angular/material';
 
 @Component({
   selector: 'app-amenity-page',
@@ -27,6 +29,17 @@ export class AmenityPageComponent implements OnInit {
     //todo add bookings and reviews
   }
   onSubmit(){
+    
+  }
+
+  review:Review[]=[]
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  reviews(){
+    //this.apiService.getreviews().pipe(first()).subscribe(item=>{console.log(item);this.review=item})
+    //setTimeout(() => window.location.reload(), 200);
+  }
+
+  message(){
     
   }
 }

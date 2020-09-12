@@ -1,0 +1,11 @@
+button{
+    margin: 13px 12px 12px 10px;
+  }
+
+.center {
+  margin: auto;
+  width: 20%;
+  border: 10px solid Blue;
+  padding: 10px;
+  color:blue;
+}

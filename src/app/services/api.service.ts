@@ -76,6 +76,16 @@ export class ApiService {
 
         return this.http.get(this.globalUrl+"/xmlexport",{ responseType: 'text'});
     }
+
+    //public getApiAmenities(): Observable<any> {
+        //return this.http.get(this.globalUrl+);
+        
+    //}
+
+    public getreviews(): Observable<any> {
+        return this.http.get(this.globalUrl+this.amenityUrl);
+    }
+
     // private handleError(error: Response) {
     //     return Observable.throw(error.statusText);
     // }

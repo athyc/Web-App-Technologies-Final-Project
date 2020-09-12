@@ -1,11 +1,24 @@
 <app-denied *ngIf="!canView"></app-denied>
 <app-denied *ngIf="!userdet"></app-denied>
 <div *ngIf="canView && userdet">
-    <p>MY PROFILE</p>
-    <p>Name: {{userdet?.firstName}}</p>
-    <p>Last Name: {{userdet?.lastName}}</p>
-    <p>Email: {{userdet?.email}}</p>
-    <p>Phone: {{userdet?.phoneNumber}}</p>
-    <p>Username: {{userdet?.username}}</p>
+
+    <div class="container">
+        <div class="row profile">
+            <div class="col-md-3">
+                <div class="profile-sidebar">
+                    <h2><strong>My Profile</strong></h2>
+
+                    <p><strong>Name: </strong> {{userdet?.firstName}} {{userdet?.lastName}</p>
+                    <p><strong>Email: </strong> {{userdet?.email}} </p>
+                    <p><strong>Phone Number: </strong> {{userdet?.phoneNumber}} </p>
+                    <p><strong>Username: </strong> {{userdet?.username}} </p>
+
+                    <div class="profile-userbuttons">
+                        <button type="button" class="btn btn-success btn-sm">Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
