@@ -6,6 +6,7 @@ import { first } from 'rxjs/operators';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { Amenity } from '../_models/amenity';
 import { Router } from '@angular/router';
+import {Roles } from '../services/token-storage.service';
 //import { ConsoleReporter } from 'jasmine';
 //import { Console } from 'console';
 
@@ -41,6 +42,7 @@ export class MyProfileComponent implements OnInit {
   userid: number;
   userdet: User;
   host:boolean;
+  roles: string[] = [];
   ngOnInit(): void {
 
     this.showAmenities = this.tokenStorageService.isLoggedInAndApprovedHost()
@@ -50,7 +52,13 @@ export class MyProfileComponent implements OnInit {
       this.userid = this.tokenStorageService.getUser().id
       // console.log(this.userid)
       this.apiService.getApiUser(this.userid).subscribe(item => { this.userdet = item; console.log(item) })
-      this.host=this.isHost(this.userdet.roles);
+      //this.host=this.isHost(this.userdet.roles);
+      this.roles = this.tokenStorageService.getUser().roles;
+      this.roles.forEach(element => {
+        if (this.roles.includes(Roles.Host)) {
+          this.host=true;
+        }
+      });
     }
     if (this.showAmenities) {
       this.apiService.getUserAmenities(this.tokenStorageService.getUser().id).pipe(first())
@@ -71,15 +79,7 @@ export class MyProfileComponent implements OnInit {
     this.apiService.delAmenity(id)
     window.location.reload();
   }
-  isHost(a): boolean {
-    let rv = false
-    a.forEach(element => {
-      if (element.name == 'ROLE_HOST') {
-        return true;
-      }
-    });
-    return rv;
-  }
+  
   goelse(){
     location.href = "http://localhost:4200/rrc";
   }

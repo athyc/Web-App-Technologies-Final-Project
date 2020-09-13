@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   roles: string[] = [];
 
-
   ngOnInit() {
     let tempUsers = this.apiService.getUNSandEmails()
     tempUsers.subscribe(item => this.userArray = item)
@@ -47,8 +46,12 @@ export class LoginComponent implements OnInit {
     //console.log(this.signupForm.controls.userName.value)
 
   }
-  goelse(){
+  goadm(){
     location.href = "http://localhost:4200/adminboard";
+  }
+
+  goelse(){
+    location.href = "http://localhost:4200/startingpage";
   }
 
   onSubmit(): void {
@@ -64,7 +67,9 @@ export class LoginComponent implements OnInit {
         this.roles = this.tokenStorage.getUser().roles;
         //this.reloadPage();
         this.roles.forEach(element => {
-          if (this.roles.includes(Roles.Host)) {
+          if (this.roles.includes(Roles.Admin)) {
+            this.goadm();
+          }else{
             this.goelse();
           }
         });
