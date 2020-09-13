@@ -50,10 +50,6 @@ export class LoginComponent implements OnInit {
     location.href = "http://localhost:4200/adminboard";
   }
 
-  goelse(){
-    location.href = "http://localhost:4200/startingpage";
-  }
-
   onSubmit(): void {
     this.authService.login(
       { username: this.loginform.controls.userName.value, password: this.loginform.controls.passWord.value }
@@ -70,7 +66,8 @@ export class LoginComponent implements OnInit {
           if (this.roles.includes(Roles.Admin)) {
             this.goadm();
           }else{
-            this.goelse();
+            //this.goelse();
+            this.reloadPage();
           }
         });
       },
