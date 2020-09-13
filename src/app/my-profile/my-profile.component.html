@@ -22,12 +22,12 @@
   <button id="myButton" class="btn btn-primary" (click)="goelse()">Add Amenity</button>
 </div>
 
-<div class="center">
+<div *ngIf="!host" class="center">
   <p><b>My Amenities</b></p>
 </div>
 
 
-<div *ngIf="showAmenities" class="mat-elevation-z8">
+<div *ngIf="!host" class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource">
 
     <!-- Position Column -->

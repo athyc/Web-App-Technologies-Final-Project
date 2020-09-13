@@ -45,7 +45,7 @@ export class TokenStorageService {
   }
 }
 
-enum Roles {
+export enum  Roles {
   User = "ROLE_USER",
   Host = "ROLE_HOST",
   Admin = "ROLE_ADMIN",

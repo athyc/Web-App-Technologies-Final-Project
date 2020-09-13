@@ -4,6 +4,7 @@ import { ApiService } from '../services/api.service';
 import { AuthService } from '../services/auth.service';
 import { TokenStorageService } from '../services/token-storage.service';
 import { Router } from '@angular/router';
+import {Roles} from '../services/token-storage.service'
 
 @Component({
   selector: 'app-login',
@@ -46,6 +47,9 @@ export class LoginComponent implements OnInit {
     //console.log(this.signupForm.controls.userName.value)
 
   }
+  goelse(){
+    location.href = "http://localhost:4200/adminboard";
+  }
 
   onSubmit(): void {
     this.authService.login(
@@ -58,7 +62,12 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        this.reloadPage();
+        //this.reloadPage();
+        this.roles.forEach(element => {
+          if (this.roles.includes(Roles.Host)) {
+            this.goelse();
+          }
+        });
       },
       err => {
         this.errorMessage = err.error.message;
@@ -70,4 +79,5 @@ export class LoginComponent implements OnInit {
   reloadPage() {
     window.location.reload();
   }
+  
 }

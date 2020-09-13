@@ -83,4 +83,8 @@ export class MyProfileComponent implements OnInit {
   goelse(){
     location.href = "http://localhost:4200/rrc";
   }
+
+  getreviews(){
+    
+  }
 }
