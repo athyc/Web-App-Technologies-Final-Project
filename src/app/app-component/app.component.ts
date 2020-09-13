@@ -28,9 +28,8 @@ export class AppComponent implements OnInit {
   }
   myProfile(){
     this.router.navigate(['/myprofile'])
-
   }
-
+  
   onSubmit(){
     location.reload();
   }
