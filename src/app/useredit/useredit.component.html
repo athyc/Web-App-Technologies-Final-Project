@@ -81,6 +81,6 @@
 
 
     <!-- form end -->
-    <button type="submit" class="btn btn-primary" [disabled]="emailExists()||userNameExists()||getPwm()">Update</button>
+    <button type="submit" class="btn btn-primary" [disabled]="emailExists()||userNameExists()||this.pwm||this.notchanged">Update</button>
 
 </form>
