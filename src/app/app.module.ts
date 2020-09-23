@@ -27,6 +27,13 @@ import { UsereditComponent } from './useredit/useredit.component';
 import { PicuploadComponent } from './picupload/picupload.component';
 import {LeafletModule} from '@asymmetrik/ngx-leaflet';
 import { MapComponent } from './map-component/map.component';
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { AmenityTableComponent } from './amenity-table/amenity-table.component';
+import en from '@angular/common/locales/en';
+import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
@@ -44,7 +51,8 @@ import { MapComponent } from './map-component/map.component';
     AmenityeditComponent,
     UsereditComponent,
     PicuploadComponent,
-    MapComponent
+    MapComponent,
+    AmenityTableComponent
   ],
   imports: [
     NgbModule,
@@ -59,9 +67,13 @@ import { MapComponent } from './map-component/map.component';
     MatFormFieldModule,
     MatTableModule,
     MatPaginatorModule,
-    LeafletModule
+    LeafletModule,
+    NzTableModule
   ],
-  providers: [authInterceptorProviders],
+  providers: [
+    authInterceptorProviders,
+    { provide: NZ_I18N, useValue: en_US }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

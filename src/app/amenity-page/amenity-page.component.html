@@ -28,6 +28,7 @@
     <p> bathroomnumber : {{ myItem?.bathroomnumber }} </p>
     <p> fromdate : {{ myItem?.fromdate }} </p>
     <p> todate : {{ myItem?.todate }} </p>
+    <button type="submit" class="btn btn-primary" (click)="clickity()">Book it!</button>
 
     <app-map [myLat]="myItem.lat" [myLon]="myItem.lon"></app-map>
 

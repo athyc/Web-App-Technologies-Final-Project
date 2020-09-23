@@ -7,6 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Review } from '../_models/review';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
 import {formatDate} from '@angular/common';
+import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-amenity-page',
   templateUrl: './amenity-page.component.html',
@@ -21,6 +22,7 @@ export class AmenityPageComponent implements OnInit {
     reviewNum: new FormControl(5,)
   })
   amenityid:number
+  searchData;
   constructor(private apiService: ApiService, private tokenStorageService: TokenStorageService, private router: Router, private route: ActivatedRoute) { }
   ngOnInit(): void {
     this.canView = this.tokenStorageService.isLoggedInUser()
@@ -32,10 +34,15 @@ export class AmenityPageComponent implements OnInit {
       this.apiService.getamenity(y).subscribe(item => { this.myItem = item; console.log(item) })
       this.apiService.getreviews(this.amenityid).subscribe(n => {this.reviews=n; console.log(n) })
     }
+
+    this.route.paramMap.pipe(map(() => window.history.state)).subscribe(state => {
+      this.searchData = state.searchData
+    })
   }
   clickity() {
     //todo add bookings and reviews
-    
+    console.log(this.searchData.fromdate)
+    console.log(this.searchData.todate)
   }
   userid: number;
   r:Review

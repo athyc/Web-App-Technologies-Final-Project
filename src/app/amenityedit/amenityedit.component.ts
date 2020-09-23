@@ -105,7 +105,6 @@ export class AmenityeditComponent implements OnInit {
     Road: new FormControl('',),
     Number: new FormControl('',),
     ZipCode: new FormControl('',),
-
     Description: new FormControl('',),
     // Address: new FormControl('', ),
     Pets: new FormControl(),
@@ -125,7 +124,6 @@ export class AmenityeditComponent implements OnInit {
     BedNumber: new FormControl('',),
     BathroomNumber: new FormControl('',),
     FromDate: new FormControl('',),
-
   })
   clickity() {
 

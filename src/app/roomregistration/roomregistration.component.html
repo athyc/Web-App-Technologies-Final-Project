@@ -65,6 +65,25 @@
         </div>
     </div>
     <div class="form-row">
+        <div class="form-group col-md-1">
+            <label class="control-label required" for="lat">Latitude</label>
+            <input class="form-control" type="number" formControlName="Lat">
+            <div
+                *ngIf="rrf.controls.Lat.errors?.required && (rrf.controls.Lat.dirty || rrf.controls.Lat.touched)">
+                <div class="text-danger">Required</div>
+            </div>
+        </div>
+        <div class="form-group col-md-1">
+            <label class="control-label required" for="Lon">Longtitude</label>
+            <input class="form-control" type="number" formControlName="Lon">
+            <div
+                *ngIf="rrf.controls.Lon.errors?.required && (rrf.controls.Lon.dirty || rrf.controls.Lon.touched)">
+                <div class="text-danger">Required</div>
+            </div>
+        </div>
+        <app-map [myLat]="rrf.controls.Lat.value" [myLon]="rrf.controls.Lon.value"></app-map>
+    </div>
+    <div class="form-row">
         <div class="form-group col-md-8">
             <label class="control-label required" for="Description">Description</label>
             <textarea class="form-control" formControlName="Description" rows="5"></textarea>

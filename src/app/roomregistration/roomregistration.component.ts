@@ -75,7 +75,8 @@ export class RoomregistrationComponent implements OnInit {
     Road: new FormControl('', [Validators.required,]),
     Number: new FormControl('', [Validators.required,]),
     ZipCode: new FormControl('', [Validators.required,]),
-
+    Lon: new FormControl(''),
+    Lat: new FormControl(''),
     Description: new FormControl('', [Validators.required]),
     // Address: new FormControl('', [Validators.required,]),
     Pets: new FormControl(false),
@@ -117,6 +118,8 @@ export class RoomregistrationComponent implements OnInit {
       "road": this.rrf.controls.Road.value,
       "number": this.rrf.controls.Number.value,
       "zipcode": this.rrf.controls.ZipCode.value,
+      "lon": this.rrf.controls.Lon.value,
+      "lat": this.rrf.controls.Lat.value,
       "description": this.rrf.controls.Description.value,
       "pets": this.rrf.controls.Pets.value,
       "smoking": this.rrf.controls.Smoking.value,

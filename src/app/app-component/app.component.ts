@@ -53,13 +53,13 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit() {
-    const a ={
+    const searchData ={
       "fromdate": ngbDateToString(this.fromDate),
       "todate": ngbDateToString(this.toDate),
       "lon":this.rrf.controls.Lon.value,
       "lat":this.rrf.controls.Lat.value
     }
-    console.log(a)
+    this.router.navigateByUrl('/sr', { state: { searchData: searchData } });
   }
   onDateSelection(date: NgbDate) {
     if (!this.fromDate && !this.toDate) {

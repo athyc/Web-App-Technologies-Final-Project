@@ -42,9 +42,14 @@ export class ApiService {
     public edituser(user,uid){
         return this.http.put(this.globalUrl+this.userUrl+'/'+uid,user).subscribe(item => console.log(item))
     }
+
     public amenity() {
         return this.http.get<Amenity[]>(this.globalUrl + this.amenityUrl)
     }
+    public amenityFiltered(queryString) {
+        return this.http.get<Amenity[]>(this.globalUrl + this.amenityUrl + '/filtered' + queryString)
+    }
+
     public getUserAmenities(id){
         return this.http.get<Amenity[]>(this.globalUrl + this.useramenityUrl+'/'+id)
     }
@@ -96,7 +101,7 @@ export class ApiService {
     //}
 
     public getreviews(id): Observable<any> {
-        return this.http.get<Review[]>(this.globalUrl+this.reviewUrl+"/"+id);
+        return this.http.get<Review[]>(this.globalUrl+this.amenityUrl+"/"+id);
     }
     public postReview(uid,aid,review){
         this.http.post(this.globalUrl+this.reviewUrl+"/user/"+uid+"/amenity/"+aid,review).subscribe(item => console.log(item))
