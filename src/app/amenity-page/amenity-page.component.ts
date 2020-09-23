@@ -15,6 +15,7 @@ import {formatDate} from '@angular/common';
 export class AmenityPageComponent implements OnInit {
   canView: boolean;
   myItem: Amenity;
+  reviews:Review[]
   rrf = new FormGroup({
     reviewText : new FormControl('',[]),
     reviewNum: new FormControl(5,)
@@ -29,6 +30,7 @@ export class AmenityPageComponent implements OnInit {
       this.amenityid=+id;
 
       this.apiService.getamenity(y).subscribe(item => { this.myItem = item; console.log(item) })
+      this.apiService.getreviews(this.amenityid).subscribe(n => {this.reviews=n; console.log(n) })
     }
   }
   clickity() {
@@ -50,10 +52,8 @@ export class AmenityPageComponent implements OnInit {
 
   review:Review[]=[]
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  reviews(){
-    //this.apiService.getreviews().pipe(first()).subscribe(item=>{console.log(item);this.review=item})
-    //setTimeout(() => window.location.reload(), 200);
-  }
+ 
+
 
   message(){
     

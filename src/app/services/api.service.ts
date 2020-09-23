@@ -95,8 +95,8 @@ export class ApiService {
         
     //}
 
-    public getreviews(): Observable<any> {
-        return this.http.get<Review[]>(this.globalUrl+this.amenityUrl);
+    public getreviews(id): Observable<any> {
+        return this.http.get<Review[]>(this.globalUrl+this.reviewUrl+"/"+id);
     }
     public postReview(uid,aid,review){
         this.http.post(this.globalUrl+this.reviewUrl+"/user/"+uid+"/amenity/"+aid,review).subscribe(item => console.log(item))

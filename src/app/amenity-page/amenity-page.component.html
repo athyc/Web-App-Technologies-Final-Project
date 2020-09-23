@@ -48,8 +48,23 @@
         <button type="submit" value="Send" class="btn btn-primary">Review!</button>
 
     </form>
+    <!-- <p *ngFor="let r of reviews">{{r.rating}}{{r.reviewtext}}</p> -->
+    <div *ngFor="let r of reviews">
+        <div class="card bg-light mb-3" style="max-width: 30rem;">
+            <div class="card-header">
+                <h1>{{r.user.username}} wrote</h1>
+            </div>
+            <div class="card-body">
 
+                <h5 class="card-title">Name:</h5>
+                <p class="card-text">{{r.user.firstName}} {{r.user.lastName}}</p>
+                <h5 class="card-title">Review:</h5>
+                <p class="card-text">{{r.reviewtext}}</p>
+                <h5 class="card-title">Stars:</h5>
+                <p class="card-text">{{r.rating}}/5</p>
 
-    <!-- add the reviews too -->
-    <!-- try to addd a form -->
-</div>
+            </div>
+        </div>
+        <!-- add the reviews too -->
+        <!-- try to addd a form -->
+    </div>
