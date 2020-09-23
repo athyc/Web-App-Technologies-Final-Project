@@ -28,27 +28,28 @@
     <p> bathroomnumber : {{ myItem?.bathroomnumber }} </p>
     <p> fromdate : {{ myItem?.fromdate }} </p>
     <p> todate : {{ myItem?.todate }} </p>
-    <button type="submit" class="btn btn-primary" (click)="clickity()">Book it!</button>
 
-    <div>
-        <form class="p-3" [formGroup]="rrf" (ngSubmit)="onSubmit()">
-            <div class="form-row">
-                <div class="form-group col-md-8">
-                    <label class="control-label required" for="Description">Description</label>
-                    <textarea class="form-control" formControlName="Description" rows="5"></textarea>
-                    <div
-                        *ngIf="rrf.controls.Description.errors?.required && (rrf.controls.Description.dirty || rrf.controls.Description.touched)">
-                        <div class="text-danger">Required</div>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary" (click)="clickity()">Review!</button>
+
+    <form class="p-3" [formGroup]="rrf" (ngSubmit)="onSubmit()">
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label class="control-label required" for="Description">Review here</label>
+                <textarea class="form-control" formControlName="reviewText" rows="5"></textarea>
 
             </div>
-        </form>
+            <div class="form-group col-md-3">
+                <label for="points">Rating (between 0 and 5):</label>
+                <input type="range" id="points" name="points" min="0" max="5" formControlName="reviewNum">
 
-    </div>
-    <button type="button" class="btn btn-primary" onclick="reviews()">Show Reviews</button>
-    <button type="button" class="btn btn-primary" onclick="message()">Message</button>
+            </div>
+
+        </div>
+        <button type="submit" value="Send" class="btn btn-primary">Review!</button>
+
+    </form>
+
+
     <!-- add the reviews too -->
     <!-- try to addd a form -->
 </div>

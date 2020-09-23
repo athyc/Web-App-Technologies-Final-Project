@@ -1,6 +1,6 @@
 export class Review{
-    id:number
-    houseid:number
-    userid:number
     
+    reviewtext:string
+    rating:number
+    date:string
 }

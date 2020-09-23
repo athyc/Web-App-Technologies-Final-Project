@@ -6,7 +6,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TokenStorageService } from '../services/token-storage.service';
 import { User } from '../_models';
 import { isNgTemplate } from '@angular/compiler';
-import { AnyPtrRecord } from 'dns';
 
 @Component({
   selector: 'app-useredit',

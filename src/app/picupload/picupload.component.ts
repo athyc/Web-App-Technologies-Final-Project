@@ -39,7 +39,7 @@ export class PicuploadComponent {
     reader.readAsDataURL(this.selectedFile); // read file as data url
 
     reader.onload = (event) => { // called once readAsDataURL is completed
-      this.url = event.target.result;
+
     }
     //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
     const uploadImageData = new FormData();
