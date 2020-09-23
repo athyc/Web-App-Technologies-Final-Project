@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Amenity } from '../_models/amenity'
 import { TokenStorageService } from './token-storage.service';
+import { User } from '../_models/user'
 
 @Injectable({
     providedIn: 'root'
@@ -67,6 +68,17 @@ export class ApiService {
         console.log("here!")
 
         return this.http.put(this.globalUrl+this.hostAprroval+'/'+id,user).subscribe()
+    }
+    public imgupload(id){
+
+    }
+    public getPic(id){
+        return this.http.get<User>('http://localhost:8080/api/getimage/' + id)
+      
+    //   if(this.url.picByte==null){
+    //       return null
+    //   }
+    //   return  'data:image/jpeg;base64,'+this.url.picByte
     }
     public getbookings(): Observable<any>{
         return this.http.get(this.globalUrl+"/bookings")

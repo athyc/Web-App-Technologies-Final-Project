@@ -12,7 +12,8 @@ import { User } from '../_models';
 export class UserProfileComponent implements OnInit {
   canView: boolean;
   userdet: User
-
+  url: User;
+  retrievedImage: any;
   constructor(private apiService: ApiService, private tokenStorageService: TokenStorageService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
@@ -25,6 +26,17 @@ export class UserProfileComponent implements OnInit {
     }
     if (this.canView) {
       this.apiService.getApiUser(y).subscribe(item => { this.userdet = item; console.log(item) })
+      this.retrievedImage = this.apiService.getPic(y).subscribe(
+        res => {
+          this.url = res;
+          if (this.url.picByte == null) {
+            this.retrievedImage = null
+          }else{
+            this.retrievedImage = 'data:image/jpeg;base64,' + this.url.picByte
+
+          }
+        }
+      );
       
     }
     console.log(id)

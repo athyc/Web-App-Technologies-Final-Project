@@ -6,7 +6,7 @@ import { first } from 'rxjs/operators';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { Amenity } from '../_models/amenity';
 import { Router } from '@angular/router';
-import {Roles } from '../services/token-storage.service';
+import { Roles } from '../services/token-storage.service';
 //import { ConsoleReporter } from 'jasmine';
 //import { Console } from 'console';
 
@@ -38,11 +38,14 @@ export class MyProfileComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
   canView: boolean
+  retrievedImage: any;
 
   userid: number;
   userdet: User;
-  host:boolean;
+  host: boolean;
   roles: string[] = [];
+  url: User;
+
   ngOnInit(): void {
 
     this.showAmenities = this.tokenStorageService.isLoggedInAndApprovedHost()
@@ -52,11 +55,23 @@ export class MyProfileComponent implements OnInit {
       this.userid = this.tokenStorageService.getUser().id
       // console.log(this.userid)
       this.apiService.getApiUser(this.userid).subscribe(item => { this.userdet = item; console.log(item) })
+      this.retrievedImage = this.apiService.getPic(this.userid).subscribe(
+        res => {
+          this.url = res;
+          if (this.url.picByte == null) {
+            this.retrievedImage = null
+          }else{
+            this.retrievedImage = 'data:image/jpeg;base64,' + this.url.picByte
+
+          }
+        }
+      );
+
       //this.host=this.isHost(this.userdet.roles);
       this.roles = this.tokenStorageService.getUser().roles;
       this.roles.forEach(element => {
         if (this.roles.includes(Roles.Host)) {
-          this.host=true;
+          this.host = true;
         }
       });
     }
@@ -79,12 +94,12 @@ export class MyProfileComponent implements OnInit {
     this.apiService.delAmenity(id)
     window.location.reload();
   }
-  
-  goelse(){
+
+  goelse() {
     location.href = "http://localhost:4200/rrc";
   }
 
-  getreviews(){
-    
+  getreviews() {
+
   }
 }

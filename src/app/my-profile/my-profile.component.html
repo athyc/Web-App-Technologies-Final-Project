@@ -1,5 +1,14 @@
 <app-denied *ngIf="!isLoggedIn"></app-denied>
-
+<div class="container row">
+  <div class="col-md-12">
+      <div *ngIf=retrievedImage>
+          <img [src]="retrievedImage" height="200" width="200">
+      </div>
+      <div *ngIf=!retrievedImage>
+          <img src="..\..\assets\user-profile.jpg" height="200" width="200">
+      </div>
+  </div>
+</div>
 <div *ngIf="isLoggedIn">
   <div class="card bg-light mb-3" style="max-width: 30rem;">
     <div class="card-header"><h1>My Profile</h1></div>

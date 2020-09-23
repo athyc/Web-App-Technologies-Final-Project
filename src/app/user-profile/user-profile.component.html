@@ -1,14 +1,25 @@
 <app-denied *ngIf="!canView"></app-denied>
 <app-denied *ngIf="!userdet"></app-denied>
+
 <div *ngIf="canView && userdet">
 
     <div class="container">
+        <div class="container row">
+            <div class="col-md-12">
+                <div *ngIf=retrievedImage>
+                    <img [src]="retrievedImage" height="200" width="200">
+                </div>
+                <div *ngIf=!retrievedImage>
+                    <img src="..\..\assets\user-profile.jpg" height="200" width="200">
+                </div>
+            </div>
+          </div>
         <div class="row profile">
             <div class="col-md-3">
                 <div class="profile-sidebar">
-                    <h2><strong>My Profile</strong></h2>
+                    <h2><strong>User's Profile</strong></h2>
 
-                    <p><strong>Name: </strong> {{userdet?.firstName}} {{userdet?.lastName}</p>
+                    <p><strong>Name: </strong> {{userdet?.firstName}} {{userdet?.lastName}}</p>
                     <p><strong>Email: </strong> {{userdet?.email}} </p>
                     <p><strong>Phone Number: </strong> {{userdet?.phoneNumber}} </p>
                     <p><strong>Username: </strong> {{userdet?.username}} </p>
