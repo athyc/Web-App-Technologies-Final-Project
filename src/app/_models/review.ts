@@ -1,6 +1,8 @@
+import { User } from './user'
+
 export class Review{
-    id:number
-    houseid:number
-    userid:number
-    
+    user:User
+    reviewtext:string
+    rating:number
+    date:string
 }

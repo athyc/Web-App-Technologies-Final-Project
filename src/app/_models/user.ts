@@ -10,4 +10,5 @@ export class User {
     email:string;
     token: string;
     roles:[];
+    picByte:string;
 }

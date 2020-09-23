@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app-component/app.component';
@@ -24,6 +24,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AmenityPageComponent } from './amenity-page/amenity-page.component';
 import { AmenityeditComponent } from './amenityedit/amenityedit.component';
 import { UsereditComponent } from './useredit/useredit.component';
+import { PicuploadComponent } from './picupload/picupload.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,8 @@ import { UsereditComponent } from './useredit/useredit.component';
     UserProfileComponent,
     AmenityPageComponent,
     AmenityeditComponent,
-    UsereditComponent
+    UsereditComponent,
+    PicuploadComponent
   ],
   imports: [
     NgbModule,
@@ -46,6 +48,7 @@ import { UsereditComponent } from './useredit/useredit.component';
     AppRoutingModule,
     HttpClientModule,  
     ReactiveFormsModule,
+    FormsModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
