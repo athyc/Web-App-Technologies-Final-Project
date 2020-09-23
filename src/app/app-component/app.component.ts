@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from '../services/token-storage.service';
 import { Router } from '@angular/router';
+import { mixinHasStickyInput } from '@angular/cdk/table';
 //import { ConsoleReporter } from 'jasmine';
 
 @Component({
@@ -36,9 +37,11 @@ export class AppComponent implements OnInit {
     location.reload();
   }
 
-  searchAmenity(input:string ){
-    document.getElementById(name);
-    console.log(document.getElementById(name));
-   // window.location.reload();
+  searchAmenity(){
+    var input = document.getElementById('id');
+    input.nodeValue;
+
+    console.log(input);
+    //window.location.reload();
   }
 }
