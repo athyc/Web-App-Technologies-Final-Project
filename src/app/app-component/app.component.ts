@@ -97,5 +97,5 @@ export class AppComponent implements OnInit {
   }
 }
 const ngbDateToString = (ngbdate): string => {
-  return `${ngbdate.year}-${`${ngbdate.month - 1}`.padStart(2, '0')}-${`${ngbdate.day}`.padStart(2, '0')}`
+  return `${ngbdate.year}-${`${ngbdate.month }`.padStart(2, '0')}-${`${ngbdate.day}`.padStart(2, '0')}`
 }
