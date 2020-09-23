@@ -47,6 +47,7 @@ export class MyProfileComponent implements OnInit {
   url: User;
 
   ngOnInit(): void {
+    console.log(this.router.url)
 
     this.showAmenities = this.tokenStorageService.isLoggedInAndApprovedHost()
     this.isLoggedIn = !!this.tokenStorageService.getToken();

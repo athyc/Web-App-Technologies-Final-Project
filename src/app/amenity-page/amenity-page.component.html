@@ -29,6 +29,7 @@
     <p> fromdate : {{ myItem?.fromdate }} </p>
     <p> todate : {{ myItem?.todate }} </p>
 
+    <app-map [myLat]="myItem.lat" [myLon]="myItem.lon"></app-map>
 
     <form class="p-3" [formGroup]="rrf" (ngSubmit)="onSubmit()">
 

@@ -25,6 +25,9 @@ import { AmenityPageComponent } from './amenity-page/amenity-page.component';
 import { AmenityeditComponent } from './amenityedit/amenityedit.component';
 import { UsereditComponent } from './useredit/useredit.component';
 import { PicuploadComponent } from './picupload/picupload.component';
+import {LeafletModule} from '@asymmetrik/ngx-leaflet';
+import { MapComponent } from './map-component/map.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +43,8 @@ import { PicuploadComponent } from './picupload/picupload.component';
     AmenityPageComponent,
     AmenityeditComponent,
     UsereditComponent,
-    PicuploadComponent
+    PicuploadComponent,
+    MapComponent
   ],
   imports: [
     NgbModule,
@@ -54,7 +58,8 @@ import { PicuploadComponent } from './picupload/picupload.component';
     MatInputModule,
     MatFormFieldModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    LeafletModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
