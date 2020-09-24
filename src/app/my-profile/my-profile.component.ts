@@ -8,6 +8,8 @@ import { Amenity } from '../_models/amenity';
 import { Router } from '@angular/router';
 import { Roles } from '../services/token-storage.service';
 import { Message } from '../_models/message';
+import { FormControl, FormGroup } from '@angular/forms';
+import { formatDate } from '@angular/common';
 //import { ConsoleReporter } from 'jasmine';
 //import { Console } from 'console';
 
@@ -38,6 +40,10 @@ export class MyProfileComponent implements OnInit {
   constructor(private apiService: ApiService, private tokenStorageService: TokenStorageService, private router: Router) {
     this.dataSource.paginator = this.paginator;
   }
+  rrf = new FormGroup({
+
+    Message: new FormControl('',),
+  })
   canView: boolean
   retrievedImage: any;
 
@@ -48,6 +54,7 @@ export class MyProfileComponent implements OnInit {
   url: User;
   messages: Message[]=[];
   newl:string="\n______________________________________________________________________________"
+  
   ngOnInit(): void {
     
     console.log(this.router.url)
@@ -81,6 +88,7 @@ export class MyProfileComponent implements OnInit {
       });
       
     }
+    
     if (this.showAmenities) {
       this.apiService.getUserAmenities(this.tokenStorageService.getUser().id).pipe(first())
         .subscribe(amenities => {
@@ -107,5 +115,15 @@ export class MyProfileComponent implements OnInit {
 
   getreviews() {
 
+  }
+  onSubmit(rid) {
+    let now = new Date();
+    let a = formatDate(new Date(), 'yyyy-MM-ddThh:mm:ss', 'en-US')
+    const m = {
+        "date":a,
+        "text":this.rrf.controls.Message.value
+    }
+    this.apiService.postmsg(this.tokenStorageService.getUser().id,rid,m)
+    window.location.reload();
   }
 }

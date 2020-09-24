@@ -34,6 +34,7 @@ import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import {CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { AmenitypicuploadComponent } from './amenitypicupload/amenitypicupload.component';
 
 registerLocaleData(en);
 
@@ -54,7 +55,8 @@ registerLocaleData(en);
     UsereditComponent,
     PicuploadComponent,
     MapComponent,
-    AmenityTableComponent
+    AmenityTableComponent,
+    AmenitypicuploadComponent
   ],
   imports: [
     NgbModule,

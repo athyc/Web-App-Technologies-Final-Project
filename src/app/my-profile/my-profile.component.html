@@ -33,10 +33,17 @@
 
 <div>
   <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
-    <div *ngFor="let item of messages" >
-      <p> Sent from {{item.sender.username}}(id = {{item.sender.id}}) to {{item.receiver.username}} (id = {{item.receiver.id}}) at {{item.date}}</p>
+    <div *ngFor="let item of messages">
+      <p> Sent from {{item.sender.username}}(id = {{item.sender.id}}) to {{item.receiver.username}} (id =
+        {{item.receiver.id}}) at {{item.date}}</p>
       <p>Contents of message: {{item.text }}</p>
+      <form [formGroup]="rrf" *ngIf="item.sender.id!=userid">
+        <textarea class="form-control" formControlName="Message"></textarea>
+        <button type="submit" class="btn btn-success" (click)="onSubmit(item.sender.id)">Reply</button>
+      </form>
+      <button type="submit" class="btn btn-danger">Delete Message</button>
       <p>{{newl}}</p>
+
     </div>
   </cdk-virtual-scroll-viewport>
 </div>

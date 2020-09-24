@@ -14,6 +14,7 @@ import { AmenityPageComponent } from './amenity-page/amenity-page.component';
 import { AmenityeditComponent } from './amenityedit/amenityedit.component';
 import { UsereditComponent } from './useredit/useredit.component';
 import { PicuploadComponent } from './picupload/picupload.component';
+import {AmenitypicuploadComponent} from'./amenitypicupload/amenitypicupload.component'
 const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent },
   { path: 'login', component: LoginComponent },
@@ -27,7 +28,8 @@ const routes: Routes = [
   {path:'amenity/:id',component:AmenityPageComponent},
   {path:'amenityedit/:id',component:AmenityeditComponent},
   {path:'useredit/:id',component:UsereditComponent},
-  {path:'picupload/:id',component:PicuploadComponent}
+  {path:'picupload/:id',component:PicuploadComponent},
+  {path:'amenitypicupload/:id',component:AmenitypicuploadComponent}
 ];
 
 @NgModule({

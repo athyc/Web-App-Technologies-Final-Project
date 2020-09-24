@@ -1,6 +1,10 @@
 <app-denied *ngIf="!canView"></app-denied>
 <app-denied *ngIf="!myItem"></app-denied>
 <div *ngIf="canView && myItem">
+    <div>
+        <div *ngFor="let p of retrieveResonse"><img [src]="p.picByte" height="200" width="200"></div>
+
+    </div>
     <p>MY AMENITY</p>
 
     <p> geographicappartment : {{ myItem?.geographicappartment }} </p>

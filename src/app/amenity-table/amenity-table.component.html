@@ -9,10 +9,26 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let data of filterTable.data">
+        <tr *ngFor="let data of filterTable.data" (click)="goToAmenityPage(data.id)">
             <td>{{ data.name }}</td>
-            <td>{{ data.age }}</td>
-            <td>{{ data.address }}</td>
+            <!-- <td>{{ data.region }}</td>
+            <td>{{ data.city }}</td>
+            <td>{{ data.road }}</td> -->
+            <td>{{ data.pets }}</td>
+            <td>{{ data.smoking }}</td>
+            <td>{{ data.gatherings }}</td>
+            <td>{{ data.livingroom }}</td>
+            <td>{{ data.wifi }}</td>
+            <td>{{ data.ac }}</td>
+            <td>{{ data.heater }}</td>
+            <td>{{ data.kitchen }}</td>
+            <td>{{ data.parking }}</td>
+            <td>{{ data.tv }}</td>
+            <td>{{ data.elevator }}</td>
+            <td>{{ data.minprice }}</td>
+            <td>{{ data.roomnumber }}</td>
+            <td>{{ data.bathroomnumber }}</td>
+            <td>{{ data.bednumber }}</td>
         </tr>
     </tbody>
 </nz-table>
