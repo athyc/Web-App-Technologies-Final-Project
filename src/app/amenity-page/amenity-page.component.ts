@@ -37,12 +37,22 @@ export class AmenityPageComponent implements OnInit {
 
     this.route.paramMap.pipe(map(() => window.history.state)).subscribe(state => {
       this.searchData = state.searchData
+      
     })
   }
   clickity() {
     //todo add bookings and reviews
     console.log(this.searchData.fromdate)
     console.log(this.searchData.todate)
+    console.log(this.amenityid)
+    console.log(this.tokenStorageService.getUser()?.id)
+    const b = {
+      "fromdate" : this.searchData.fromdate,
+      "todate" : this.searchData.todate,
+      
+    }
+    this.apiService.newbooking(this.tokenStorageService.getUser()?.id,this.amenityid,b)
+    this.router.navigate(['/myprofile'])
   }
   userid: number;
   r:Review

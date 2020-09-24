@@ -24,12 +24,15 @@
                     <p><strong>Phone Number: </strong> {{userdet?.phoneNumber}} </p>
                     <p><strong>Username: </strong> {{userdet?.username}} </p>
 
-                    <div class="profile-userbuttons">
+                    <!-- <div class="profile-userbuttons">
                         <button type="button" class="btn btn-success btn-sm">Message</button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+<form class="p-3" [formGroup]="rrf">
+    <textarea class="form-control" formControlName="Message" rows="5"></textarea>
+    <button type="submit" class="btn btn-success" (click)="onSubmit()">Send a Message!</button>
+</form>

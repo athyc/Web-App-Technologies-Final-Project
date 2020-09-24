@@ -1,17 +1,19 @@
 <app-denied *ngIf="!isLoggedIn"></app-denied>
 <div class="container row">
   <div class="col-md-12">
-      <div *ngIf=retrievedImage>
-          <img [src]="retrievedImage" height="200" width="200">
-      </div>
-      <div *ngIf=!retrievedImage>
-          <img src="..\..\assets\user-profile.jpg" height="200" width="200">
-      </div>
+    <div *ngIf=retrievedImage>
+      <img [src]="retrievedImage" height="200" width="200">
+    </div>
+    <div *ngIf=!retrievedImage>
+      <img src="..\..\assets\user-profile.jpg" height="200" width="200">
+    </div>
   </div>
 </div>
 <div *ngIf="isLoggedIn">
   <div class="card bg-light mb-3" style="max-width: 30rem;">
-    <div class="card-header"><h1>My Profile</h1></div>
+    <div class="card-header">
+      <h1>My Profile</h1>
+    </div>
     <div class="card-body">
       <p class="card-text">{{userdet?.picture}}</p>
       <h5 class="card-title">Name:</h5>
@@ -23,10 +25,21 @@
       <h5 class="card-title">Username:</h5>
       <p class="card-text">{{userdet?.username}}</p>
     </div>
-</div>
-<button class="btn btn-primary" (click)="editProfile()" >Edit Profile Info</button>
+  </div>
+  <button class="btn btn-primary" (click)="editProfile()">Edit Profile Info</button>
 
-<div></div>
+
+</div>
+
+<div>
+  <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+    <div *ngFor="let item of messages" >
+      <p> Sent from {{item.sender.username}}(id = {{item.sender.id}}) to {{item.receiver.username}} (id = {{item.receiver.id}}) at {{item.date}}</p>
+      <p>Contents of message: {{item.text }}</p>
+      <p>{{newl}}</p>
+    </div>
+  </cdk-virtual-scroll-viewport>
+</div>
 <div *ngIf="host">
   <button id="myButton" class="btn btn-primary" (click)="goelse()">Add Amenity</button>
 </div>
@@ -84,11 +97,13 @@
     </ng-container>
     <ng-container matColumnDef="buttons">
       <th mat-header-cell *matHeaderCellDef> Buttons </th>
-      <td mat-cell *matCellDef="let element"> <button class="btn btn-primary"  (click)="editAmenity(element.id,element)">Edit</button><button class="btn btn-danger" (click)="deleteRow(element.id)">X</button></td>
+      <td mat-cell *matCellDef="let element"> <button class="btn btn-primary"
+          (click)="editAmenity(element.id,element)">Edit</button><button class="btn btn-danger"
+          (click)="deleteRow(element.id)">X</button></td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

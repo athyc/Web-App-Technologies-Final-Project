@@ -32,6 +32,8 @@ import { AmenityTableComponent } from './amenity-table/amenity-table.component';
 import en from '@angular/common/locales/en';
 import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
+import {CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 registerLocaleData(en);
 
@@ -68,7 +70,8 @@ registerLocaleData(en);
     MatTableModule,
     MatPaginatorModule,
     LeafletModule,
-    NzTableModule
+    NzTableModule,
+    ScrollingModule
   ],
   providers: [
     authInterceptorProviders,

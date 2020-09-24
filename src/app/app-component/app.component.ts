@@ -72,7 +72,7 @@ export class AppComponent implements OnInit {
     }
   }
   clickity() {
-    console.log(this.rrf.controls.Region.value)
+    
     window.open('https://www.latlong.net/')
   }
   isHovered(date: NgbDate) {

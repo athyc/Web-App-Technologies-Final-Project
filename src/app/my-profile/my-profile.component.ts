@@ -7,6 +7,7 @@ import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { Amenity } from '../_models/amenity';
 import { Router } from '@angular/router';
 import { Roles } from '../services/token-storage.service';
+import { Message } from '../_models/message';
 //import { ConsoleReporter } from 'jasmine';
 //import { Console } from 'console';
 
@@ -45,14 +46,17 @@ export class MyProfileComponent implements OnInit {
   host: boolean;
   roles: string[] = [];
   url: User;
-
+  messages: Message[]=[];
+  newl:string="\n______________________________________________________________________________"
   ngOnInit(): void {
+    
     console.log(this.router.url)
-
+    
     this.showAmenities = this.tokenStorageService.isLoggedInAndApprovedHost()
     this.isLoggedIn = !!this.tokenStorageService.getToken();
     this.canView = this.tokenStorageService.isLoggedInUser()
     if (this.isLoggedIn) {
+      this.apiService.getmsgs(this.tokenStorageService.getUser().id).pipe(first()).subscribe(item=>{this.messages = item})
       this.userid = this.tokenStorageService.getUser().id
       // console.log(this.userid)
       this.apiService.getApiUser(this.userid).subscribe(item => { this.userdet = item; console.log(item) })
@@ -75,6 +79,7 @@ export class MyProfileComponent implements OnInit {
           this.host = true;
         }
       });
+      
     }
     if (this.showAmenities) {
       this.apiService.getUserAmenities(this.tokenStorageService.getUser().id).pipe(first())

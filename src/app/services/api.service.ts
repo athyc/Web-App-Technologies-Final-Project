@@ -5,6 +5,7 @@ import { Amenity } from '../_models/amenity'
 import { TokenStorageService } from './token-storage.service';
 import { User } from '../_models/user'
 import { Review } from '../_models/review';
+import { Message } from '../_models/message';
 
 @Injectable({
     providedIn: 'root'
@@ -18,6 +19,7 @@ export class ApiService {
     hostAprroval = "/hostApproval"
     validatingURL = "/usersEmailAndUsernames"
     reviewUrl="/reviews"
+    messageUrl = "/messages"
     constructor(private http: HttpClient) {
     }
 
@@ -86,6 +88,9 @@ export class ApiService {
     //   }
     //   return  'data:image/jpeg;base64,'+this.url.picByte
     }
+    public newbooking(uid,aid,body){
+        this.http.post(this.globalUrl+"/bookings/user/"+uid+this.amenityUrl+'/'+aid,body).subscribe()
+    }
     public getbookings(): Observable<any>{
         return this.http.get(this.globalUrl+"/bookings")
     }
@@ -94,7 +99,12 @@ export class ApiService {
 
         return this.http.get(this.globalUrl+"/xmlexport",{ responseType: 'text'});
     }
-
+    public getmsgs(uid){
+        return this.http.get<Message[]>("http://localhost:8080/api/messages/user/"+uid);
+    }
+    public postmsg(usid,urid,msg){
+        return this.http.post(this.globalUrl+"/messages/sender/"+usid+"/receiver/"+urid,msg).subscribe()
+    }
     //public getApiAmenities(): Observable<any> {
         //return this.http.get(this.globalUrl+);
         
