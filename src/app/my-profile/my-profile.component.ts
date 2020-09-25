@@ -54,7 +54,9 @@ export class MyProfileComponent implements OnInit {
   url: User;
   messages: Message[]=[];
   newl:string="\n______________________________________________________________________________"
-  
+  clickity():void{
+    this.router.navigate(['/picupload/' + this.userid])
+  }
   ngOnInit(): void {
     
     console.log(this.router.url)
@@ -97,6 +99,10 @@ export class MyProfileComponent implements OnInit {
           this.dataSource.paginator = this.paginator
         });
     }
+  }
+  pictures(id, amenity){
+        this.router.navigate(['/amenitypicupload/' + id])
+
   }
   editProfile() {
     this.router.navigate(['/useredit/' + this.userid])

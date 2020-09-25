@@ -9,13 +9,14 @@
     </div>
   </div>
 </div>
+
+<button type="submit" class="btn btn-primary" (click)="clickity()">Change profile picture</button>
 <div *ngIf="isLoggedIn">
   <div class="card bg-light mb-3" style="max-width: 30rem;">
     <div class="card-header">
       <h1>My Profile</h1>
     </div>
     <div class="card-body">
-      <p class="card-text">{{userdet?.picture}}</p>
       <h5 class="card-title">Name:</h5>
       <p class="card-text">{{userdet?.firstName}} {{userdet?.lastName}}</p>
       <h5 class="card-title">Email:</h5>
@@ -47,71 +48,77 @@
     </div>
   </cdk-virtual-scroll-viewport>
 </div>
-<div *ngIf="host">
+<div *ngIf="showAmenities">
   <button id="myButton" class="btn btn-primary" (click)="goelse()">Add Amenity</button>
+  <div class="center">
+    <p><b>My Amenities</b></p>
+  </div>
+  <div *ngIf="host" class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+  
+      <!-- Position Column -->
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="name" style="margin: 10px;">
+        <th mat-header-cell *matHeaderCellDef> name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="geographicappartment">
+        <th mat-header-cell *matHeaderCellDef> area </th>
+        <td mat-cell *matCellDef="let element"> {{element.geographicappartment}} </td>
+      </ng-container>
+      <ng-container matColumnDef="region">
+        <th mat-header-cell *matHeaderCellDef> region </th>
+        <td mat-cell *matCellDef="let element"> {{element.region}} </td>
+      </ng-container>
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef> city </th>
+        <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+      </ng-container>
+      <ng-container matColumnDef="municipality">
+        <th mat-header-cell *matHeaderCellDef> municipality </th>
+        <td mat-cell *matCellDef="let element"> {{element.municipality}} </td>
+      </ng-container>
+      <ng-container matColumnDef="parking">
+        <th mat-header-cell *matHeaderCellDef> parking </th>
+        <td mat-cell *matCellDef="let element"> {{element.parking}} </td>
+      </ng-container>
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> type </th>
+        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+      </ng-container>
+      <ng-container matColumnDef="minprice">
+        <th mat-header-cell *matHeaderCellDef> minprice </th>
+        <td mat-cell *matCellDef="let element"> {{element.minprice}} </td>
+      </ng-container>
+      <ng-container matColumnDef="roomnumber">
+        <th mat-header-cell *matHeaderCellDef> roomnumber </th>
+        <td mat-cell *matCellDef="let element"> {{element.roomnumber}} </td>
+      </ng-container>
+      <ng-container matColumnDef="bathroomnumber">
+        <th mat-header-cell *matHeaderCellDef> bathroomnumber </th>
+        <td mat-cell *matCellDef="let element"> {{element.bathroomnumber}} </td>
+      </ng-container>
+      <ng-container matColumnDef="buttons">
+        <th mat-header-cell *matHeaderCellDef> Buttons </th>
+        <td mat-cell *matCellDef="let element"> 
+          <button class="btn btn-primary"
+            (click)="editAmenity(element.id,element)">Edit</button>
+            <button class="btn btn-danger"
+            (click)="deleteRow(element.id)">X</button>
+            <button class="btn btn-primary"
+            (click)="pictures(element.id,element)">add pics</button>
+          </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>  
+
 </div>
 
-<div *ngIf="host" class="center">
-  <p><b>My Amenities</b></p>
-</div>
 
 
-<div *ngIf="host" class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource">
-
-    <!-- Position Column -->
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="name" style="margin: 10px;">
-      <th mat-header-cell *matHeaderCellDef> name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
-    <ng-container matColumnDef="geographicappartment">
-      <th mat-header-cell *matHeaderCellDef> area </th>
-      <td mat-cell *matCellDef="let element"> {{element.geographicappartment}} </td>
-    </ng-container>
-    <ng-container matColumnDef="region">
-      <th mat-header-cell *matHeaderCellDef> region </th>
-      <td mat-cell *matCellDef="let element"> {{element.region}} </td>
-    </ng-container>
-    <ng-container matColumnDef="city">
-      <th mat-header-cell *matHeaderCellDef> city </th>
-      <td mat-cell *matCellDef="let element"> {{element.city}} </td>
-    </ng-container>
-    <ng-container matColumnDef="municipality">
-      <th mat-header-cell *matHeaderCellDef> municipality </th>
-      <td mat-cell *matCellDef="let element"> {{element.municipality}} </td>
-    </ng-container>
-    <ng-container matColumnDef="parking">
-      <th mat-header-cell *matHeaderCellDef> parking </th>
-      <td mat-cell *matCellDef="let element"> {{element.parking}} </td>
-    </ng-container>
-    <ng-container matColumnDef="type">
-      <th mat-header-cell *matHeaderCellDef> type </th>
-      <td mat-cell *matCellDef="let element"> {{element.type}} </td>
-    </ng-container>
-    <ng-container matColumnDef="minprice">
-      <th mat-header-cell *matHeaderCellDef> minprice </th>
-      <td mat-cell *matCellDef="let element"> {{element.minprice}} </td>
-    </ng-container>
-    <ng-container matColumnDef="roomnumber">
-      <th mat-header-cell *matHeaderCellDef> roomnumber </th>
-      <td mat-cell *matCellDef="let element"> {{element.roomnumber}} </td>
-    </ng-container>
-    <ng-container matColumnDef="bathroomnumber">
-      <th mat-header-cell *matHeaderCellDef> bathroomnumber </th>
-      <td mat-cell *matCellDef="let element"> {{element.bathroomnumber}} </td>
-    </ng-container>
-    <ng-container matColumnDef="buttons">
-      <th mat-header-cell *matHeaderCellDef> Buttons </th>
-      <td mat-cell *matCellDef="let element"> <button class="btn btn-primary"
-          (click)="editAmenity(element.id,element)">Edit</button><button class="btn btn-danger"
-          (click)="deleteRow(element.id)">X</button></td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-</div>

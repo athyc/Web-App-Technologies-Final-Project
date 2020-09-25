@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TokenStorageService } from '../services/token-storage.service';
 import { User } from '../_models';
@@ -14,9 +14,14 @@ import { isNgTemplate } from '@angular/compiler';
 })
 export class UsereditComponent implements OnInit {
   
-  constructor(private apiService: ApiService, private authService: AuthService, private router: Router, private tokenStorageService: TokenStorageService) { }
+  constructor(private apiService: ApiService, private authService: AuthService, private router: Router, private tokenStorageService: TokenStorageService, private route: ActivatedRoute) { }
+  canView :boolean=false;
 
   ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    var y: number = +id;
+    this.canView = this.tokenStorageService.isLoggedInUser() && (this.tokenStorageService.getUser().id==y)
+
     let tempUsers = this.apiService.getUNSandEmails()
     tempUsers.subscribe(item => this.userArray = item)
     console.log(this.userArray)

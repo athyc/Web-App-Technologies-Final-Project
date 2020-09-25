@@ -35,6 +35,7 @@ import { registerLocaleData } from '@angular/common';
 import {CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { AmenitypicuploadComponent } from './amenitypicupload/amenitypicupload.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 registerLocaleData(en);
 
@@ -73,7 +74,8 @@ registerLocaleData(en);
     MatPaginatorModule,
     LeafletModule,
     NzTableModule,
-    ScrollingModule
+    ScrollingModule,
+    MatCheckboxModule
   ],
   providers: [
     authInterceptorProviders,
