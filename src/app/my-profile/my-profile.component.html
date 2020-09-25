@@ -11,7 +11,7 @@
 </div>
 
 <button type="submit" class="btn btn-primary" (click)="clickity()">Change profile picture</button>
-<div *ngIf="isLoggedIn">
+<div *ngIf="canView">
   <div class="card bg-light mb-3" style="max-width: 30rem;">
     <div class="card-header">
       <h1>My Profile</h1>
