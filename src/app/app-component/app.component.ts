@@ -15,7 +15,8 @@ export class AppComponent implements OnInit {
   isLoggedIn = false;
   username: string;
   name: string;
-
+  apiService: any;
+  id:any;
   constructor(private tokenStorageService: TokenStorageService, private router: Router, public formatter: NgbDateParserFormatter, private calendar: NgbCalendar) {
   }
   rrf = new FormGroup({
@@ -29,6 +30,7 @@ export class AppComponent implements OnInit {
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       this.username = user.username;
+      this.id=user.id;
     }
   }
   fromDate: NgbDate | null;
@@ -60,6 +62,7 @@ export class AppComponent implements OnInit {
       "lat":this.rrf.controls.Lat.value
     }
     this.router.navigateByUrl('/sr', { state: { searchData: searchData } });
+    this.apiService.postSearch(this.id,searchData);
   }
   onDateSelection(date: NgbDate) {
     if (!this.fromDate && !this.toDate) {
