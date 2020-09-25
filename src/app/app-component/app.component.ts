@@ -3,6 +3,7 @@ import { TokenStorageService } from '../services/token-storage.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbCalendar, NgbDate, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { ApiService } from '../services/api.service';
 //import { ConsoleReporter } from 'jasmine';
 
 @Component({
@@ -15,8 +16,8 @@ export class AppComponent implements OnInit {
   isLoggedIn = false;
   username: string;
   name: string;
-
-  constructor(private tokenStorageService: TokenStorageService, private router: Router, public formatter: NgbDateParserFormatter, private calendar: NgbCalendar) {
+  id:number
+  constructor(private tokenStorageService: TokenStorageService, private router: Router, public formatter: NgbDateParserFormatter, private calendar: NgbCalendar, private apiService: ApiService) {
   }
   rrf = new FormGroup({
 
@@ -29,6 +30,7 @@ export class AppComponent implements OnInit {
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       this.username = user.username;
+      this.id=user.id
     }
   }
   fromDate: NgbDate | null;
@@ -59,6 +61,7 @@ export class AppComponent implements OnInit {
       "lon":this.rrf.controls.Lon.value,
       "lat":this.rrf.controls.Lat.value
     }
+    this.apiService.postSearch(this.tokenStorageService.getUser()?.id,searchData)
     this.router.navigateByUrl('/sr', { state: { searchData: searchData } });
   }
   onDateSelection(date: NgbDate) {
@@ -93,6 +96,7 @@ export class AppComponent implements OnInit {
   searchAmenity(input: string) {
     document.getElementById(name);
     console.log(document.getElementById(name));
+    
     // window.location.reload();
   }
 }

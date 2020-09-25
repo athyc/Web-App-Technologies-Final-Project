@@ -109,6 +109,9 @@ export class ApiService {
         //return this.http.get(this.globalUrl+);
         
     //}
+    public postSearch(id, searchData){
+        return this.http.post(this.globalUrl+"/userSearch/"+id,searchData).subscribe()
+    }
 
     public getreviews(id): Observable<any> {
         return this.http.get<Review[]>(this.globalUrl+this.reviewUrl+"/"+id);
