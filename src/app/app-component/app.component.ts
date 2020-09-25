@@ -61,8 +61,9 @@ export class AppComponent implements OnInit {
       "lon":this.rrf.controls.Lon.value,
       "lat":this.rrf.controls.Lat.value
     }
-    this.apiService.postSearch(this.tokenStorageService.getUser()?.id,searchData)
+    // this.apiService.postSearch(this.tokenStorageService.getUser()?.id,searchData)
     this.router.navigateByUrl('/sr', { state: { searchData: searchData } });
+    this.apiService.postSearch(this.id,searchData);
   }
   onDateSelection(date: NgbDate) {
     if (!this.fromDate && !this.toDate) {

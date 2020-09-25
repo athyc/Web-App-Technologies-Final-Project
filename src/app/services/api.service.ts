@@ -5,7 +5,6 @@ import { Amenity } from '../_models/amenity'
 import { TokenStorageService } from './token-storage.service';
 import { User } from '../_models/user'
 import { Review } from '../_models/review';
-import { Message } from '../_models/message';
 
 @Injectable({
     providedIn: 'root'
@@ -19,7 +18,6 @@ export class ApiService {
     hostAprroval = "/hostApproval"
     validatingURL = "/usersEmailAndUsernames"
     reviewUrl="/reviews"
-    messageUrl = "/messages"
     constructor(private http: HttpClient) {
     }
 
@@ -44,14 +42,9 @@ export class ApiService {
     public edituser(user,uid){
         return this.http.put(this.globalUrl+this.userUrl+'/'+uid,user).subscribe(item => console.log(item))
     }
-
     public amenity() {
         return this.http.get<Amenity[]>(this.globalUrl + this.amenityUrl)
     }
-    public amenityFiltered(queryString) {
-        return this.http.get<Amenity[]>(this.globalUrl + this.amenityUrl + '/filtered' + queryString)
-    }
-
     public getUserAmenities(id){
         return this.http.get<Amenity[]>(this.globalUrl + this.useramenityUrl+'/'+id)
     }
@@ -88,9 +81,6 @@ export class ApiService {
     //   }
     //   return  'data:image/jpeg;base64,'+this.url.picByte
     }
-    public newbooking(uid,aid,body){
-        this.http.post(this.globalUrl+"/bookings/user/"+uid+this.amenityUrl+'/'+aid,body).subscribe()
-    }
     public getbookings(): Observable<any>{
         return this.http.get(this.globalUrl+"/bookings")
     }
@@ -99,12 +89,7 @@ export class ApiService {
 
         return this.http.get(this.globalUrl+"/xmlexport",{ responseType: 'text'});
     }
-    public getmsgs(uid){
-        return this.http.get<Message[]>("http://localhost:8080/api/messages/user/"+uid);
-    }
-    public postmsg(usid,urid,msg){
-        return this.http.post(this.globalUrl+"/messages/sender/"+usid+"/receiver/"+urid,msg).subscribe()
-    }
+
     //public getApiAmenities(): Observable<any> {
         //return this.http.get(this.globalUrl+);
         
@@ -119,6 +104,13 @@ export class ApiService {
     public postReview(uid,aid,review){
         this.http.post(this.globalUrl+this.reviewUrl+"/user/"+uid+"/amenity/"+aid,review).subscribe(item => console.log(item))
     }
+
+    //SEARCHES TO BACKEND HERE
+    public postSearch(id,SearchData){
+        this.http.post(this.globalUrl+"/usersearch/"+id,SearchData).subscribe(item => console.log(item));
+    }
+
+
     // private handleError(error: Response) {
     //     return Observable.throw(error.statusText);
     // }
