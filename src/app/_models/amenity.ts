@@ -27,4 +27,6 @@ export interface Amenity {
     bednumber:number;
     fromdate: string;
     todate: string;
+    lat: number;
+    lon: number;
 }

@@ -25,6 +25,19 @@ import { AmenityPageComponent } from './amenity-page/amenity-page.component';
 import { AmenityeditComponent } from './amenityedit/amenityedit.component';
 import { UsereditComponent } from './useredit/useredit.component';
 import { PicuploadComponent } from './picupload/picupload.component';
+import {LeafletModule} from '@asymmetrik/ngx-leaflet';
+import { MapComponent } from './map-component/map.component';
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { AmenityTableComponent } from './amenity-table/amenity-table.component';
+import en from '@angular/common/locales/en';
+import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import {CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { AmenitypicuploadComponent } from './amenitypicupload/amenitypicupload.component';
+
+registerLocaleData(en);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +53,10 @@ import { PicuploadComponent } from './picupload/picupload.component';
     AmenityPageComponent,
     AmenityeditComponent,
     UsereditComponent,
-    PicuploadComponent
+    PicuploadComponent,
+    MapComponent,
+    AmenityTableComponent,
+    AmenitypicuploadComponent
   ],
   imports: [
     NgbModule,
@@ -54,9 +70,15 @@ import { PicuploadComponent } from './picupload/picupload.component';
     MatInputModule,
     MatFormFieldModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    LeafletModule,
+    NzTableModule,
+    ScrollingModule
   ],
-  providers: [authInterceptorProviders],
+  providers: [
+    authInterceptorProviders,
+    { provide: NZ_I18N, useValue: en_US }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

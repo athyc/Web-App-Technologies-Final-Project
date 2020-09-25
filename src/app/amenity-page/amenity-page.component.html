@@ -1,6 +1,10 @@
 <app-denied *ngIf="!canView"></app-denied>
 <app-denied *ngIf="!myItem"></app-denied>
 <div *ngIf="canView && myItem">
+    <div>
+        <div *ngFor="let p of retrieveResonse"><img [src]="p.picByte" height="200" width="200"></div>
+
+    </div>
     <p>MY AMENITY</p>
 
     <p> geographicappartment : {{ myItem?.geographicappartment }} </p>
@@ -28,7 +32,9 @@
     <p> bathroomnumber : {{ myItem?.bathroomnumber }} </p>
     <p> fromdate : {{ myItem?.fromdate }} </p>
     <p> todate : {{ myItem?.todate }} </p>
+    <button type="submit" class="btn btn-primary" (click)="clickity()">Book it!</button>
 
+    <app-map [myLat]="myItem.lat" [myLon]="myItem.lon"></app-map>
 
     <form class="p-3" [formGroup]="rrf" (ngSubmit)="onSubmit()">
 
