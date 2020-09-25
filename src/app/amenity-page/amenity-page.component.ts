@@ -19,7 +19,7 @@ import { HttpClient, HttpEventType } from '@angular/common/http';
 export class AmenityPageComponent implements OnInit {
   canView: boolean;
   myItem: Amenity;
-  reviews:Review[]
+  reviews:Review[]=[];
   rrf = new FormGroup({
     reviewText : new FormControl('',[]),
     reviewNum: new FormControl(5,)

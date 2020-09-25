@@ -62,6 +62,7 @@ export class AmenityeditComponent implements OnInit {
     this.y=y
     console.log(y)
     this.canView = this.tokenStorageService.isLoggedInAndApprovedHost();
+    console.log(this.canView)
     if (this.canView) {
       this.apiService.getamenity(y).subscribe(item => {
         this.myItem = item; console.log(item);
@@ -91,7 +92,10 @@ export class AmenityeditComponent implements OnInit {
         this.rrf.controls.BedNumber.patchValue(item.bednumber);
         this.rrf.controls.BathroomNumber.patchValue(item.bathroomnumber);
         this.rrf.controls.FromDate.patchValue(item.fromdate);
-
+        if(this.myItem.user.id!=this.tokenStorageService.getUser().id){
+          this.canView=false
+        }
+        
       })
     }
   }

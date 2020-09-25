@@ -1,3 +1,5 @@
+import { User } from './user';
+
 export interface Amenity {
     id:number;
     name: string;
@@ -29,4 +31,5 @@ export interface Amenity {
     todate: string;
     lat: number;
     lon: number;
+    user:User;
 }

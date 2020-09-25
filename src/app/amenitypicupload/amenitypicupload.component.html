@@ -1,25 +1,23 @@
-<div class="container row">
-    <div class="col-md-12">
-        <h1>Upload Image</h1>
+<div *ngIf="canView">
+    <div class="container row">
+        <div class="col-md-12">
+            <h1>Upload Image</h1>
+        </div>
     </div>
+    <div class="container row">
+        <div class="col-md-6">
+            <input type="file" (change)="onFileChanged($event)">
+        </div>
+        <div class="col-md-6">
+            <input type="button" (click)="onUpload()" value="upload">
+        </div>
+    </div>
+    <div class="container row">
+        <div class="col-md-12">
+            <div *ngIf=message>{{message}}</div>
+        </div>
+    </div>
+    <mat-checkbox (change)="checkCheckBoxvalue($event)">Check the box if you want ot upload more picturs of your amenity!</mat-checkbox>
+    <div *ngFor="let p of retrieveResonse"><img [src]="p.picByte"></div>
 </div>
-<div class="container row">
-    <div class="col-md-6">
-        <input type="file" (change)="onFileChanged($event)">
-    </div>
-    <div class="col-md-6">
-        <input type="button" (click)="onUpload()" value="upload">
-    </div>
-</div>
-<hr />
-<div class="container row">
-    <div class="col-md-12">
-        <div *ngIf=message>{{message}}</div>
-    </div>
-</div>
-<div class="form-check">
-    <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="Pets">
-    <label class="form-check-label " for="gridCheck">
-        Will you upload another picture? Check the box if yes
-    </label>
-<div *ngFor="let p of retrieveResonse"><img [src]="p.picByte"></div>
+<app-denied *ngIf="!canView"></app-denied>

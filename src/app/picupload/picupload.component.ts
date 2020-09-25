@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Url } from 'url';
 import { User } from '../_models';
 import { ApiService } from '../services/api.service';
+import { TokenStorageService } from '../services/token-storage.service';
 
 @Component({
   selector: 'app-picupload',
@@ -14,7 +15,7 @@ import { ApiService } from '../services/api.service';
 
 
 export class PicuploadComponent {
-  constructor(private httpClient: HttpClient, private route: ActivatedRoute,private apiService: ApiService) { }
+  constructor(private httpClient: HttpClient, private route: ActivatedRoute,private apiService: ApiService, private tokenStorageService: TokenStorageService) { }
   selectedFile: File;
   retrievedImage: any;
   base64Data: any;
@@ -23,17 +24,26 @@ export class PicuploadComponent {
   imageName: any;
    url:User;
   switch:boolean = true;
-  
+  canView :boolean=false;
   //Gets called when the user selects an image
   public onFileChanged(event) {
     //Select File
     this.selectedFile = event.target.files[0];
   }
-  //Gets called when the user clicks on submit to upload the image
-  onUpload() {
+  ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     var y: number = +id;
+    this.canView = (this.tokenStorageService.isLoggedIn()) && (this.tokenStorageService.getUser().id==y)
+
+  }
+  //Gets called when the user clicks on submit to upload the image
+  onUpload() {
+
+    const id = this.route.snapshot.paramMap.get('id');
+    var y: number = +id;
+
     console.log(this.selectedFile);
+
     var reader = new FileReader();
 
     reader.readAsDataURL(this.selectedFile); // read file as data url
