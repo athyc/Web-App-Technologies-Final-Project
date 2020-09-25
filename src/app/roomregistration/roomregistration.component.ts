@@ -99,10 +99,8 @@ export class RoomregistrationComponent implements OnInit {
 
   })
   clickity() {
-    console.log("fd")
-    console.log(this.fromDate)
-    console.log("td")
-    console.log(this.toDate)
+    
+    window.open('https://www.latlong.net/')
   }
   onSubmit(): void {
     console.log(this.fromDate)
